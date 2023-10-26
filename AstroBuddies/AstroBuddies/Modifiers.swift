@@ -22,7 +22,7 @@ struct TextBox: ViewModifier {
             .frame(width: 280, height: 80)
             .background(Color(red: 0.73, green: 0.74, blue: 0.83))
             .cornerRadius(9)
-            .padding()
+            .padding(5)
     }
 }
 
@@ -32,7 +32,6 @@ struct TextBoxLabel: ViewModifier {
             .frame(width: 250, height: 80)
             .font(.custom("Inter", size: 30).weight(.medium))
             .padding()
-            
     }
 }
 
