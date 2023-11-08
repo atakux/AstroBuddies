@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct TabBar: View {
     var body: some View {
         TabView {
@@ -33,7 +34,6 @@ struct TabBar: View {
                 }
 
         }.navigationBarBackButtonHidden(true)
-            .background(Color(red: 0.19, green: 0.16, blue: 0.18))
         
     }
 }

@@ -74,7 +74,6 @@ struct LoginScreen: View {
         }
         // the following makes it so the user must click the sign up rather than a back button
         .navigationBarBackButtonHidden(true)
-        .navigationBarHidden(true)
     }
     
     
@@ -158,14 +157,12 @@ struct SignUpScreen: View {
                 }
                 
                 Spacer()
-                Spacer()
                 
             }
             .modifier(AppBackground())
             .frame(width: 300, height: 100)
         }
         // the following makes it so user must click the button asking for login rather than a back button
-        .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
     }
 }
@@ -174,9 +171,9 @@ struct SignUpScreen: View {
 struct HomeScreen: View {
     var body: some View {
         VStack {
-            Spacer()
+            
         }.modifier(AppBackground())
-            .frame(width: 300, height: 50)
+            .frame(width: 300, height: 100)
         
         TabBar()
     }
