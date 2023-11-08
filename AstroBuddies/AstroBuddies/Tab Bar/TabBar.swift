@@ -11,6 +11,7 @@ import SwiftUI
 struct TabBar: View {
     var body: some View {
         TabView {
+            
             NavigationView {
                 HomeScreen()
             }
@@ -18,22 +19,29 @@ struct TabBar: View {
                 Image("home-icon")
             }
             
-            Text("Tarot")
-                .tabItem {
+            NavigationView {
+                TarotReading()
+            }
+            .tabItem {
                     Image("tarot-icon")
-                }
+            }
             
-            Text("Compatibility")
-                .tabItem {
-                    Image("compatibility-icon")
-                }
+            NavigationView {
+                Compatibility()
+            }
+            .tabItem {
+                Image("compatibility-icon")
+            }
             
-            Text("Message")
-                .tabItem {
-                    Image("message-icon")
-                }
+            NavigationView {
+                Messaging()
+            }
+            .tabItem {
+                Image("message-icon")
+            }
 
         }.navigationBarBackButtonHidden(true)
+        Spacer(minLength: 2)
         
     }
 }
