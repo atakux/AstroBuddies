@@ -31,6 +31,9 @@ struct SignupView: View {
             Text("Sign Up")
                 .modifier(HeaderModifier())
 
+            // TODO: maybe add a UI indicator to show if the passwords do or do not match
+            
+            // TODO: encrypt and hash password to store in database
             
             // form fields
             VStack(spacing: 24) {
@@ -58,6 +61,8 @@ struct SignupView: View {
                 }
                 .modifier(ButtonTextModifier())
             }
+            .disabled(!formIsValid)
+            .opacity(formIsValid ? 1.0 : 0.75)
             .modifier(ButtonModifier())
             .padding(.top)
             
@@ -83,3 +88,15 @@ struct SignupView: View {
     }
 }
 
+extension SignupView: AuthenticationFormProtocol {
+    var formIsValid: Bool {
+        // the form is valid if the following conditions are true
+        return !username.isEmpty
+        && !email.isEmpty
+        && email.contains("@")
+        && !password.isEmpty
+        && password.count > 5
+        && confirmPassword == password
+        
+    }
+}
