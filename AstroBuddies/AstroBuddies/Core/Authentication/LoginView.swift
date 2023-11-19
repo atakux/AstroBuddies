@@ -29,6 +29,7 @@ struct LoginView: View {
                 Text("Login")
                     .modifier(HeaderModifier())
 
+                // TODO: ensure that the password entered is the same password (decrypted) as the one linked to that username in the database
                 
                 // form fields
                 VStack(spacing: 24) {
@@ -54,6 +55,8 @@ struct LoginView: View {
                     .modifier(ButtonTextModifier())
                 }
                 .modifier(ButtonModifier())
+                .disabled(!formIsValid)
+                .opacity(formIsValid ? 1.0 : 0.75)
                 .padding(.top)
                 
                 Spacer()
@@ -80,3 +83,12 @@ struct LoginView: View {
     }
 }
 
+extension LoginView: AuthenticationFormProtocol {
+    var formIsValid: Bool {
+        // the form is valid if the following conditions are true
+        return !username.isEmpty
+        && !password.isEmpty
+        && password.count > 5
+        
+    }
+}
