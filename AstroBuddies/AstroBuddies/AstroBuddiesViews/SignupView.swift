@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct SignupView: View {
+    // initialize variables to use within this view of the app
     @State private var username = ""
     @State private var email = ""
     @State private var password = ""
     @State private var confirmPassword = ""
     
+    // this is for navigating to the LoginView when user already had an account
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -54,7 +56,8 @@ struct SignupView: View {
             .padding(.top)
             
             
-            // already have an account navigation
+            // already have an account navigation button
+            // navigates to previous view which is the LoginView, so the user can log in since they already have an account
             Button {
                 dismiss()
             } label: {

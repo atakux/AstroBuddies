@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    
+    // initialize variables to use within this view
     @State private var username = ""
     @State private var password = ""
     
@@ -41,6 +41,7 @@ struct LoginView: View {
                 // sign in button
                 Button {
                     print("logged in")
+                    
                 } label: {
                     HStack {
                         Text("Login")
@@ -52,9 +53,11 @@ struct LoginView: View {
                 
                 Spacer()
                 
-                // sign up if already have acc navigation
+                // navigate to the SignupView so user can create an account
                 NavigationLink {
+                    // navigate to the SignUp screen
                     SignupView()
+                    // remove the back button at the top so user has to use provided buttons and navigation tools.
                         .navigationBarBackButtonHidden(true)
                 } label: {
                     HStack(spacing: 3) {
