@@ -13,35 +13,35 @@ struct TabBar: View {
         TabView {
             
             NavigationView {
-                HomeScreen()
+                Text("Home scren")
             }
             .tabItem {
                 Image("home-icon")
             }
             
             NavigationView {
-                TarotReading()
+                Text("tarot scren")
             }
             .tabItem {
                     Image("tarot-icon")
             }
             
             NavigationView {
-                Compatibility()
+                Text("compatibility scren")
             }
             .tabItem {
                 Image("compatibility-icon")
             }
             
             NavigationView {
-                Messaging()
+                Text("message scren")
             }
             .tabItem {
                 Image("message-icon")
             }
 
         }.navigationBarBackButtonHidden(true)
-        Spacer(minLength: 2)
+        Spacer()
         
     }
 }

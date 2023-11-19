@@ -12,6 +12,9 @@ struct LoginView: View {
     @State private var username = ""
     @State private var password = ""
     
+    // create instance of AuthViewModel from the environmentObject we created in the App
+    @EnvironmentObject var viewModel: AuthViewModel
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -40,7 +43,9 @@ struct LoginView: View {
                 
                 // sign in button
                 Button {
-                    print("logged in")
+                    Task {
+                        try await viewModel.login(withUsername: username, password: password)
+                    }
                     
                 } label: {
                     HStack {
@@ -54,18 +59,19 @@ struct LoginView: View {
                 Spacer()
                 
                 // navigate to the SignupView so user can create an account
-                NavigationLink {
-                    // navigate to the SignUp screen
-                    SignupView()
-                    // remove the back button at the top so user has to use provided buttons and navigation tools.
-                        .navigationBarBackButtonHidden(true)
-                } label: {
+                NavigationLink(destination:
+                                // navigate to the SignUp screen
+                               SignupView()
+                               // remove the back button at the top so user has to use provided buttons and navigation tools.
+                                   .navigationBarBackButtonHidden(true),
+                               label: {
                     HStack(spacing: 3) {
                         Text("Don't have an account yet?\n\nSign Up!")
                             .modifier(TextModifier())
                             .multilineTextAlignment(.center)
                     }
-                }
+                })
+                    
                 
                 Spacer()
             }

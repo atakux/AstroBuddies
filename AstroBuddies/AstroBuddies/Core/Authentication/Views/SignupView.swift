@@ -14,6 +14,10 @@ struct SignupView: View {
     @State private var password = ""
     @State private var confirmPassword = ""
     
+    // create instance of AuthViewModel from the environmentObject initialized in the App
+    @EnvironmentObject var viewModel: AuthViewModel
+    
+
     // this is for navigating to the LoginView when user already had an account
     @Environment(\.dismiss) var dismiss
     
@@ -45,7 +49,9 @@ struct SignupView: View {
             
             // sign up button
             Button {
-                print("signed up")
+                Task {
+                    try await viewModel.signUp(withUsername: username, email: email, password: password)
+                }
             } label: {
                 HStack {
                     Text("Sign up")
