@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		198D8C362B09AC82004A6BD6 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198D8C352B09AC81004A6BD6 /* LoginView.swift */; };
+		198D8C382B09AF67004A6BD6 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198D8C372B09AF66004A6BD6 /* InputView.swift */; };
+		198D8C3A2B09BAA7004A6BD6 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198D8C392B09BAA7004A6BD6 /* SignupView.swift */; };
 		19A5C7302AEA20330030D62E /* AstroBuddiesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A5C72F2AEA20330030D62E /* AstroBuddiesApp.swift */; };
 		19A5C7322AEA20330030D62E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A5C7312AEA20330030D62E /* ContentView.swift */; };
 		19A5C7342AEA203E0030D62E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19A5C7332AEA203E0030D62E /* Assets.xcassets */; };
@@ -37,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		198D8C352B09AC81004A6BD6 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		198D8C372B09AF66004A6BD6 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		198D8C392B09BAA7004A6BD6 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		19A5C72C2AEA20330030D62E /* AstroBuddies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AstroBuddies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19A5C72F2AEA20330030D62E /* AstroBuddiesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroBuddiesApp.swift; sourceTree = "<group>"; };
 		19A5C7312AEA20330030D62E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -77,6 +83,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		198D8C332B09AC35004A6BD6 /* AstroBuddiesViews */ = {
+			isa = PBXGroup;
+			children = (
+				198D8C352B09AC81004A6BD6 /* LoginView.swift */,
+				198D8C372B09AF66004A6BD6 /* InputView.swift */,
+				198D8C392B09BAA7004A6BD6 /* SignupView.swift */,
+			);
+			path = AstroBuddiesViews;
+			sourceTree = "<group>";
+		};
 		19A5C7232AEA20330030D62E = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +116,7 @@
 		19A5C72E2AEA20330030D62E /* AstroBuddies */ = {
 			isa = PBXGroup;
 			children = (
+				198D8C332B09AC35004A6BD6 /* AstroBuddiesViews */,
 				19A5C75D2AEAF85D0030D62E /* Tab Bar */,
 				19A5C72F2AEA20330030D62E /* AstroBuddiesApp.swift */,
 				19A5C7312AEA20330030D62E /* ContentView.swift */,
@@ -274,8 +291,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				198D8C362B09AC82004A6BD6 /* LoginView.swift in Sources */,
+				198D8C382B09AF67004A6BD6 /* InputView.swift in Sources */,
 				19A5C75C2AEA2E030030D62E /* Modifiers.swift in Sources */,
 				19A5C7322AEA20330030D62E /* ContentView.swift in Sources */,
+				198D8C3A2B09BAA7004A6BD6 /* SignupView.swift in Sources */,
 				19A5C7302AEA20330030D62E /* AstroBuddiesApp.swift in Sources */,
 				19A5C75A2AEA23540030D62E /* AstroBuddiesViews.swift in Sources */,
 				19A5C75F2AEAF8780030D62E /* TabBar.swift in Sources */,
