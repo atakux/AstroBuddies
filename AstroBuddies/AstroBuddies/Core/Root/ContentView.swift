@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
+    // create instance of AuthViewModel
     @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {

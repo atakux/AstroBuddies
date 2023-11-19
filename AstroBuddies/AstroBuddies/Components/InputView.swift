@@ -19,7 +19,6 @@ struct InputView: View {
         VStack(alignment: .leading, spacing: 2) {
             
             if isSecureField {
-                
                 SecureField(placeholder, text: $text)
                     .modifier(TextBox())
                     .modifier(TextBoxLabel())
