@@ -50,6 +50,12 @@
 		19A5C74D2AEA20450030D62E /* AstroBuddiesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A5C74C2AEA20450030D62E /* AstroBuddiesUITestsLaunchTests.swift */; };
 		19A5C75C2AEA2E030030D62E /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A5C75B2AEA2E030030D62E /* Modifiers.swift */; };
 		19A5C75F2AEAF8780030D62E /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A5C75E2AEAF8780030D62E /* TabBar.swift */; };
+		19CC61E52B0AC6CB0006CC74 /* TarotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CC61E42B0AC6CA0006CC74 /* TarotView.swift */; };
+		19CC61E72B0AC6F30006CC74 /* CompatibilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CC61E62B0AC6F30006CC74 /* CompatibilityView.swift */; };
+		19CC61E92B0AC72C0006CC74 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CC61E82B0AC72B0006CC74 /* MessageView.swift */; };
+		19CC61EB2B0AC9E70006CC74 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CC61EA2B0AC9E70006CC74 /* SettingsView.swift */; };
+		19CC61ED2B0ADBAC0006CC74 /* BirthInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CC61EC2B0ADBAB0006CC74 /* BirthInfoView.swift */; };
+		19CC61EF2B0AE2E20006CC74 /* SettingsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CC61EE2B0AE2E10006CC74 /* SettingsRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +95,12 @@
 		19A5C74C2AEA20450030D62E /* AstroBuddiesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroBuddiesUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		19A5C75B2AEA2E030030D62E /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		19A5C75E2AEAF8780030D62E /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		19CC61E42B0AC6CA0006CC74 /* TarotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarotView.swift; sourceTree = "<group>"; };
+		19CC61E62B0AC6F30006CC74 /* CompatibilityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityView.swift; sourceTree = "<group>"; };
+		19CC61E82B0AC72B0006CC74 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		19CC61EA2B0AC9E70006CC74 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		19CC61EC2B0ADBAB0006CC74 /* BirthInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthInfoView.swift; sourceTree = "<group>"; };
+		19CC61EE2B0AE2E10006CC74 /* SettingsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +159,10 @@
 			isa = PBXGroup;
 			children = (
 				198D8C3B2B09C8A0004A6BD6 /* HomeView.swift */,
+				19CC61E42B0AC6CA0006CC74 /* TarotView.swift */,
+				19CC61E62B0AC6F30006CC74 /* CompatibilityView.swift */,
+				19CC61E82B0AC72B0006CC74 /* MessageView.swift */,
+				19CC61EA2B0AC9E70006CC74 /* SettingsView.swift */,
 			);
 			path = AstroBuddiesViews;
 			sourceTree = "<group>";
@@ -171,8 +187,10 @@
 		198D8C782B09D1C6004A6BD6 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				19A5C75D2AEAF85D0030D62E /* Tab Bar */,
 				198D8C7B2B09D29E004A6BD6 /* Modifiers */,
 				198D8C372B09AF66004A6BD6 /* InputView.swift */,
+				19CC61EE2B0AE2E10006CC74 /* SettingsRowView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -183,7 +201,6 @@
 				198D8C332B09AC35004A6BD6 /* AstroBuddiesViews */,
 				198D8C762B09D183004A6BD6 /* Authentication */,
 				198D8C7A2B09D25E004A6BD6 /* Root */,
-				19A5C75D2AEAF85D0030D62E /* Tab Bar */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -209,6 +226,7 @@
 			children = (
 				198D8C352B09AC81004A6BD6 /* LoginView.swift */,
 				198D8C392B09BAA7004A6BD6 /* SignupView.swift */,
+				19CC61EC2B0ADBAB0006CC74 /* BirthInfoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -463,10 +481,16 @@
 				198D8C362B09AC82004A6BD6 /* LoginView.swift in Sources */,
 				198D8C382B09AF67004A6BD6 /* InputView.swift in Sources */,
 				19A5C75C2AEA2E030030D62E /* Modifiers.swift in Sources */,
+				19CC61EF2B0AE2E20006CC74 /* SettingsRowView.swift in Sources */,
 				19A5C7322AEA20330030D62E /* ContentView.swift in Sources */,
+				19CC61E92B0AC72C0006CC74 /* MessageView.swift in Sources */,
 				198D8C3A2B09BAA7004A6BD6 /* SignupView.swift in Sources */,
+				19CC61ED2B0ADBAC0006CC74 /* BirthInfoView.swift in Sources */,
+				19CC61EB2B0AC9E70006CC74 /* SettingsView.swift in Sources */,
 				19A5C7302AEA20330030D62E /* AstroBuddiesApp.swift in Sources */,
+				19CC61E72B0AC6F30006CC74 /* CompatibilityView.swift in Sources */,
 				19A5C75F2AEAF8780030D62E /* TabBar.swift in Sources */,
+				19CC61E52B0AC6CB0006CC74 /* TarotView.swift in Sources */,
 				198D8C842B09D585004A6BD6 /* User.swift in Sources */,
 				198D8C812B09D3A3004A6BD6 /* AuthViewModel.swift in Sources */,
 			);

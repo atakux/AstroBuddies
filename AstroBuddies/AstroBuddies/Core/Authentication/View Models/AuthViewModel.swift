@@ -114,6 +114,8 @@ class AuthViewModel: ObservableObject {
         }
     }
     
+    
+    
     func fetchUserData() async {
         /*
          fetchUserData function

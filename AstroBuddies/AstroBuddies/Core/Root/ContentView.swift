@@ -16,7 +16,8 @@ struct ContentView: View {
         Group {
             if viewModel.userSession != nil {
                 // if there is a user session currently running, open to HomeView when app is launched
-                HomeView()
+                TabBar()
+                
             } else {
                 // otherwise, open to LoginView when app is launched to prompt user to login, or create an account
                 LoginView()

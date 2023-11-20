@@ -16,7 +16,8 @@ struct AppBackground: ViewModifier {
             content
                 .frame(width: geometry.size.width, height: geometry.size.height)
                 .background(Color(red: 0.27, green: 0.25, blue: 0.33))
-        }
+                .ignoresSafeArea()
+        }.ignoresSafeArea()
         
     }
 }
@@ -59,13 +60,14 @@ struct TextBox: ViewModifier {
             .frame(width: UIScreen.main.bounds.width - 120, height: 60)
             .background(Color(red: 0.73, green: 0.74, blue: 0.83))
             .cornerRadius(9)
+            .font(.custom("Inter", size: 24).weight(.medium))
     }
 }
 
 struct TextBoxLabel: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .frame(width: UIScreen.main.bounds.width - 140, height: 50)
+            .frame(width: UIScreen.main.bounds.width - 140, height: 60)
             .font(.custom("Inter", size: 24).weight(.medium))
     }
 }

@@ -18,7 +18,7 @@ struct LoginView: View {
     var body: some View {
         NavigationView {
             VStack {
-                
+                Spacer()
                 // TODO: add astrobuddies logo at the top
                 
                 // AstroBuddies Title
@@ -55,18 +55,13 @@ struct LoginView: View {
                     .modifier(ButtonTextModifier())
                 }
                 .modifier(ButtonModifier())
-                .disabled(!formIsValid)
-                .opacity(formIsValid ? 1.0 : 0.75)
                 .padding(.top)
                 
                 Spacer()
                 
                 // navigate to the SignupView so user can create an account
-                NavigationLink(destination:
-                                // navigate to the SignUp screen
-                               SignupView()
-                               // remove the back button at the top so user has to use provided buttons and navigation tools.
-                                   .navigationBarBackButtonHidden(true),
+                // also remove the back button at the top so user has to use provided buttons and navigation tools.
+                NavigationLink(destination: SignupView().navigationBarBackButtonHidden(true),
                                label: {
                     HStack(spacing: 3) {
                         Text("Don't have an account yet?\n\nSign Up!")
@@ -83,12 +78,3 @@ struct LoginView: View {
     }
 }
 
-extension LoginView: AuthenticationFormProtocol {
-    var formIsValid: Bool {
-        // the form is valid if the following conditions are true
-        return !username.isEmpty
-        && !password.isEmpty
-        && password.count > 5
-        
-    }
-}

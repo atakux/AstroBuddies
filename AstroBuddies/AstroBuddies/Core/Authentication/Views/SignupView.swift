@@ -23,6 +23,8 @@ struct SignupView: View {
     
     var body: some View {
         VStack {
+            Spacer()
+            
             // AstroBuddies Title
             Text("AstroBuddies")
                 .modifier(AstroBuddiesTitle())
@@ -52,17 +54,21 @@ struct SignupView: View {
             
             // sign up button
             Button {
+                
+                // TODO: somehow make it so after the user registers their email, username, and password it takes them to the BirthInfoView to input their birth information
+                
                 Task {
                     try await viewModel.signUp(withUsername: username, email: email, password: password)
                 }
+                
+                BirthInfoView()
+                
             } label: {
                 HStack {
                     Text("Sign up")
                 }
                 .modifier(ButtonTextModifier())
             }
-            .disabled(!formIsValid)
-            .opacity(formIsValid ? 1.0 : 0.75)
             .modifier(ButtonModifier())
             .padding(.top)
             
@@ -85,18 +91,5 @@ struct SignupView: View {
 
         }
         .modifier(AppBackground())
-    }
-}
-
-extension SignupView: AuthenticationFormProtocol {
-    var formIsValid: Bool {
-        // the form is valid if the following conditions are true
-        return !username.isEmpty
-        && !email.isEmpty
-        && email.contains("@")
-        && !password.isEmpty
-        && password.count > 5
-        && confirmPassword == password
-        
     }
 }
