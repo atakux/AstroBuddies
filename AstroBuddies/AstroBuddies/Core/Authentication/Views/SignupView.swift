@@ -24,6 +24,7 @@ struct SignupView: View {
     var body: some View {
         VStack {
             Spacer()
+            Spacer()
             
             // AstroBuddies Title
             Text("AstroBuddies")

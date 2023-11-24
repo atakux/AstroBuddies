@@ -14,17 +14,22 @@ struct SettingsRowView: View {
     let tintColour: Color
     
     var body: some View {
-        HStack(spacing: 12) {
+        
+        // Set up buttons to be in SettingsViews
+        
+        HStack(spacing: 24) {
             Image(systemName: imageName)
                 .imageScale(.small)
                 .font(.title)
                 .foregroundColor(tintColour)
             
-            Text(title)
-                .font(.subheadline)
-                .modifier(TextModifier())
+            Spacer()
             
-        }
+            Text(title)
+                .fontWeight(.heavy)
+                .modifier(SettingsTextModifier())
+            
+        }.padding()
     }
 }
 

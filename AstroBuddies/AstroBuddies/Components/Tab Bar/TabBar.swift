@@ -18,25 +18,24 @@ struct TabBar: View {
                 .tabItem {
                     Image("home-icon")
                 }
-
-           TarotView()
+            
+            TarotView()
                 .tabItem {
-                        Image("tarot-icon")
+                    Image("tarot-icon")
                 }
-
-           CompatibilityView()
+            
+            CompatibilityView()
                 .tabItem {
                     Image("compatibility-icon")
                 }
-
-           MessageView()
+            
+            MessageView()
                 .tabItem {
                     Image("message-icon")
                 }
-
-        }.navigationBarBackButtonHidden(true)
-            .modifier(AppBackground())
-
+            
+        }
+        
         
     }
 }
