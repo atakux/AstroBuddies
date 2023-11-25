@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0862DA202B12715A009113B8 /* HoroscopeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0862DA1F2B12715A009113B8 /* HoroscopeView.swift */; };
+		0862DA222B12803E009113B8 /* MoonInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0862DA212B12803E009113B8 /* MoonInfoView.swift */; };
 		198D8C362B09AC82004A6BD6 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198D8C352B09AC81004A6BD6 /* LoginView.swift */; };
 		198D8C382B09AF67004A6BD6 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198D8C372B09AF66004A6BD6 /* InputView.swift */; };
 		198D8C3A2B09BAA7004A6BD6 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198D8C392B09BAA7004A6BD6 /* SignupView.swift */; };
@@ -76,6 +78,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0862DA1F2B12715A009113B8 /* HoroscopeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoroscopeView.swift; sourceTree = "<group>"; };
+		0862DA212B12803E009113B8 /* MoonInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonInfoView.swift; sourceTree = "<group>"; };
 		198D8C352B09AC81004A6BD6 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginView.swift; path = ../LoginView.swift; sourceTree = "<group>"; };
 		198D8C372B09AF66004A6BD6 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		198D8C392B09BAA7004A6BD6 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
@@ -163,6 +167,8 @@
 				19CC61E62B0AC6F30006CC74 /* CompatibilityView.swift */,
 				19CC61E82B0AC72B0006CC74 /* MessageView.swift */,
 				19CC61EA2B0AC9E70006CC74 /* SettingsView.swift */,
+				0862DA1F2B12715A009113B8 /* HoroscopeView.swift */,
+				0862DA212B12803E009113B8 /* MoonInfoView.swift */,
 			);
 			path = AstroBuddiesViews;
 			sourceTree = "<group>";
@@ -477,6 +483,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0862DA202B12715A009113B8 /* HoroscopeView.swift in Sources */,
 				198D8C3C2B09C8A1004A6BD6 /* HomeView.swift in Sources */,
 				198D8C362B09AC82004A6BD6 /* LoginView.swift in Sources */,
 				198D8C382B09AF67004A6BD6 /* InputView.swift in Sources */,
@@ -489,6 +496,7 @@
 				19CC61EB2B0AC9E70006CC74 /* SettingsView.swift in Sources */,
 				19A5C7302AEA20330030D62E /* AstroBuddiesApp.swift in Sources */,
 				19CC61E72B0AC6F30006CC74 /* CompatibilityView.swift in Sources */,
+				0862DA222B12803E009113B8 /* MoonInfoView.swift in Sources */,
 				19A5C75F2AEAF8780030D62E /* TabBar.swift in Sources */,
 				19CC61E52B0AC6CB0006CC74 /* TarotView.swift in Sources */,
 				198D8C842B09D585004A6BD6 /* User.swift in Sources */,

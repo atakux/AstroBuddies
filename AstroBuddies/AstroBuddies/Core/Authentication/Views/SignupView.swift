@@ -80,7 +80,7 @@ struct SignupView: View {
                 dismiss()
             } label: {
                 HStack(spacing: 3) {
-                    Text("Already have an account?\n\nLogin!")
+                    Text("Already have an account?\nLogin!")
                         .modifier(TextModifier())
                         .multilineTextAlignment(.center)
                 }

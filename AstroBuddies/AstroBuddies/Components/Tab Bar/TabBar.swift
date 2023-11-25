@@ -10,10 +10,15 @@ import SwiftUI
 
 
 struct TabBar: View {
+    init() {
+            // Set the background color of the TabBar using UIKit appearance
+            UITabBar.appearance().barTintColor = UIColor(Color(red: 0.19, green: 0.16, blue: 0.18))
+        }
+    
     var body: some View {
 
+        
         TabView {
-
             HomeView()
                 .tabItem {
                     Image("home-icon")
@@ -35,6 +40,7 @@ struct TabBar: View {
                 }
             
         }
+        
         
         
     }

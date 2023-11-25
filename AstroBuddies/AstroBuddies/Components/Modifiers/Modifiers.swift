@@ -33,12 +33,23 @@ struct AstroBuddiesTitle: ViewModifier {
     }
 }
 
+struct TitleModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        GeometryReader { geometry in
+            content
+                .frame(width: geometry.size.width/2+160, height: 60, alignment: .leading)
+                .font(.custom("Inter", size: 26).weight(.bold))
+                .foregroundColor(Color(red: 0.73, green: 0.71, blue: 0.98))
+        }
+    }
+}
+
 
 struct HeaderModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .frame(width: 280, height: 30, alignment: .leading)
-            .font(.custom("Inter", size: 28).weight(.bold))
+            .font(.custom("Inter", size: 26).weight(.bold))
             .foregroundColor(Color(red: 0.83, green: 0.83, blue: 0.88))
     }
 }
@@ -52,6 +63,17 @@ struct TextModifier: ViewModifier {
     }
 }
 
+
+struct ContentTextModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        GeometryReader { geometry in
+            content
+                .frame(width: geometry.size.width/2+160, alignment: .leading)
+                .font(Font.custom("Inter", size: 18))
+                .foregroundColor(Color(red: 0.79, green: 0.73, blue: 0.83))
+        }
+    }
+}
 
 // Textbox and texbox label modifiers
 struct TextBox: ViewModifier {

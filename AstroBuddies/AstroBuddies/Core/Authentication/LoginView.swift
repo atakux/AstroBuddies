@@ -64,7 +64,7 @@ struct LoginView: View {
                 NavigationLink(destination: SignupView().navigationBarBackButtonHidden(true),
                                label: {
                     HStack(spacing: 3) {
-                        Text("Don't have an account yet?\n\nSign Up!")
+                        Text("Don't have an account yet?\nSign Up!")
                             .modifier(TextModifier())
                             .multilineTextAlignment(.center)
                     }

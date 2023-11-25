@@ -32,6 +32,7 @@ struct ContentView: View {
                         .onAppear {
                             isSettingsViewActive = false
                         }
+                    
                 }
                 
             // If no current user session is in place, direct to LoginView for the user to either login to AstroBuddies or navigate to the SignupView to sign up for an account
