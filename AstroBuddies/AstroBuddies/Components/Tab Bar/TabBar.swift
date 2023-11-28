@@ -10,38 +10,57 @@ import SwiftUI
 
 
 struct TabBar: View {
-    init() {
-            // Set the background color of the TabBar using UIKit appearance
-            UITabBar.appearance().barTintColor = UIColor(Color(red: 0.19, green: 0.16, blue: 0.18))
-        }
+    @State private var selectedTab: Tab = .home
     
-    var body: some View {
+    enum Tab {
+        case home, tarot, compatibility, message
+    }
+    
 
-        
-        TabView {
+    var body: some View {
+        TabView(selection: $selectedTab) {
+            
+            // Tab icon for HomeView
+            // if selected, changes colour
             HomeView()
+                .tag(Tab.home)
                 .tabItem {
-                    Image("home-icon")
+                    Image(selectedTab == .home ? "home-icon-fill" : "home-icon")
                 }
             
+            
+            // Tab icon for TarotView
+            // if selected, changes colour
             TarotView()
+                .tag(Tab.tarot)
                 .tabItem {
-                    Image("tarot-icon")
+                    Spacer()
+                    Image(selectedTab == .tarot ? "tarot-icon-fill" : "tarot-icon").padding()
                 }
             
+            
+            // Tab icon for CompatibilityView
+            // if selected, changes colour
             CompatibilityView()
+                .tag(Tab.compatibility)
                 .tabItem {
-                    Image("compatibility-icon")
+                    Image(selectedTab == .compatibility ? "compatibility-icon-fill" : "compatibility-icon")
                 }
             
+            
+            // Tab icon for MessageView
+            // if selected, changes colour
             MessageView()
+                .tag(Tab.message)
                 .tabItem {
-                    Image("message-icon")
+                    Image(selectedTab == .message ? "message-icon-fill" : "message-icon")
                 }
-            
         }
+        .onAppear() {
+            UITabBar.appearance().barTintColor = UIColor(Color(red: 0.19, green: 0.16, blue: 0.18))
+            UITabBar.appearance().backgroundColor = UIColor(Color(red: 0.19, green: 0.16, blue: 0.18))
         
-        
-        
+                }
+        .accentColor(.white) // Set the selected tab item color
     }
 }

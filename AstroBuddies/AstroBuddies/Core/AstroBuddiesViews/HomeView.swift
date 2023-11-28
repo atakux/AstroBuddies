@@ -189,9 +189,13 @@ struct HomeView: View {
                             
                             
                             
-                            // TODO: add more containers holding other details!
+                            // TODO: add more containers holding other details about the user's astrology!
+                            
+                            
+                            
                             
                         }.modifier(AppBackground())
+                            .frame(maxHeight: .infinity)
                         
                     }.modifier(AppBackground())
                 }.modifier(AppBackground())
