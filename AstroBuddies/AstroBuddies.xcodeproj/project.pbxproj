@@ -86,7 +86,7 @@
 		198D8C372B09AF66004A6BD6 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		198D8C392B09BAA7004A6BD6 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		198D8C3B2B09C8A0004A6BD6 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		198D8C3D2B09CDB0004A6BD6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "AstroBuddies/Model/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		198D8C3D2B09CDB0004A6BD6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "AstroBuddies/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		198D8C802B09D3A3004A6BD6 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		198D8C832B09D585004A6BD6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		19A5C72C2AEA20330030D62E /* AstroBuddies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AstroBuddies.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -251,7 +251,6 @@
 		198D8C822B09D520004A6BD6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				198D8C3D2B09CDB0004A6BD6 /* GoogleService-Info.plist */,
 				198D8C832B09D585004A6BD6 /* User.swift */,
 			);
 			path = Model;
@@ -284,6 +283,7 @@
 				198D8C782B09D1C6004A6BD6 /* Components */,
 				198D8C792B09D1D2004A6BD6 /* Core */,
 				198D8C822B09D520004A6BD6 /* Model */,
+				198D8C3D2B09CDB0004A6BD6 /* GoogleService-Info.plist */,
 				19A5C7332AEA203E0030D62E /* Assets.xcassets */,
 				19A5C7352AEA203E0030D62E /* Preview Content */,
 			);
