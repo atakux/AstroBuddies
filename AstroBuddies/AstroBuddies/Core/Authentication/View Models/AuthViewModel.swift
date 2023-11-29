@@ -38,7 +38,7 @@ class AuthViewModel: ObservableObject {
     }
     
     
-    func login(withUsername username: String, password: String) async throws {
+    func login(withEmail email: String, password: String) async throws {
         /*
          login function:
             - takes in username and password.
@@ -49,7 +49,7 @@ class AuthViewModel: ObservableObject {
         // TODO: password authentication
         
         do {
-            let result = try await Auth.auth().signIn(withEmail: username, password: password)
+            let result = try await Auth.auth().signIn(withEmail: email, password: password)
             
             self.userSession = result.user
             
@@ -92,10 +92,7 @@ class AuthViewModel: ObservableObject {
         }
     }
     
-    func logout() {
-        
-        // TODO: implementation!
-        
+    func logout() {        
         /*
          logout function
             - signs current user out of their session
@@ -113,6 +110,8 @@ class AuthViewModel: ObservableObject {
             print("DEBUG: Failed to log out with error \(error.localizedDescription)")
         }
     }
+    
+    
     
     func fetchUserData() async {
         /*

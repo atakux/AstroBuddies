@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     // initialize variables to use within this view
-    @State private var username = ""
+    @State private var email = ""
     @State private var password = ""
     
     // create instance of AuthViewModel from the environmentObject we created in the App
@@ -18,7 +18,7 @@ struct LoginView: View {
     var body: some View {
         NavigationView {
             VStack {
-                
+                Spacer()
                 // TODO: add astrobuddies logo at the top
                 
                 // AstroBuddies Title
@@ -33,7 +33,7 @@ struct LoginView: View {
                 
                 // form fields
                 VStack(spacing: 24) {
-                    InputView(text: $username, placeholder: "Username")
+                    InputView(text: $email, placeholder: "Email")
                         .autocapitalization(.none)
                     
                     InputView(text: $password, placeholder: "Password", isSecureField: true)
@@ -45,7 +45,7 @@ struct LoginView: View {
                 // sign in button
                 Button {
                     Task {
-                        try await viewModel.login(withUsername: username, password: password)
+                        try await viewModel.login(withEmail: email, password: password)
                     }
                     
                 } label: {
@@ -55,21 +55,16 @@ struct LoginView: View {
                     .modifier(ButtonTextModifier())
                 }
                 .modifier(ButtonModifier())
-                .disabled(!formIsValid)
-                .opacity(formIsValid ? 1.0 : 0.75)
                 .padding(.top)
                 
                 Spacer()
                 
                 // navigate to the SignupView so user can create an account
-                NavigationLink(destination:
-                                // navigate to the SignUp screen
-                               SignupView()
-                               // remove the back button at the top so user has to use provided buttons and navigation tools.
-                                   .navigationBarBackButtonHidden(true),
+                // also remove the back button at the top so user has to use provided buttons and navigation tools.
+                NavigationLink(destination: SignupView().navigationBarBackButtonHidden(true),
                                label: {
                     HStack(spacing: 3) {
-                        Text("Don't have an account yet?\n\nSign Up!")
+                        Text("Don't have an account yet?\nSign Up!")
                             .modifier(TextModifier())
                             .multilineTextAlignment(.center)
                     }
@@ -83,12 +78,3 @@ struct LoginView: View {
     }
 }
 
-extension LoginView: AuthenticationFormProtocol {
-    var formIsValid: Bool {
-        // the form is valid if the following conditions are true
-        return !username.isEmpty
-        && !password.isEmpty
-        && password.count > 5
-        
-    }
-}
