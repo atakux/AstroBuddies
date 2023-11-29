@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     // initialize variables to use within this view
-    @State private var username = ""
+    @State private var email = ""
     @State private var password = ""
     
     // create instance of AuthViewModel from the environmentObject we created in the App
@@ -33,7 +33,7 @@ struct LoginView: View {
                 
                 // form fields
                 VStack(spacing: 24) {
-                    InputView(text: $username, placeholder: "Username")
+                    InputView(text: $email, placeholder: "Email")
                         .autocapitalization(.none)
                     
                     InputView(text: $password, placeholder: "Password", isSecureField: true)
@@ -45,7 +45,7 @@ struct LoginView: View {
                 // sign in button
                 Button {
                     Task {
-                        try await viewModel.login(withUsername: username, password: password)
+                        try await viewModel.login(withEmail: email, password: password)
                     }
                     
                 } label: {

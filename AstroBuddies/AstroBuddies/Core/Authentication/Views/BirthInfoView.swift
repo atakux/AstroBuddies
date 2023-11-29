@@ -20,9 +20,3 @@ struct BirthInfoView: View {
         }.modifier(AppBackground())
     }
 }
-
-struct BirthInfoView_Previews: PreviewProvider {
-    static var previews: some View {
-        BirthInfoView()
-    }
-}

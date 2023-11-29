@@ -5,7 +5,9 @@
 //  Created by ataku x on 11/25/23.
 //
 
+import Foundation
 import SwiftUI
+import SwiftData
 
 struct HoroscopeView: View {
     @Environment(\.presentationMode) var presentationMode
@@ -45,18 +47,26 @@ struct HoroscopeView: View {
                 
             }.frame(alignment: .leading)
                 
+            
+            
+            
             // TODO: integrate a horoscope API to replace the placeholder text
             ScrollView(.vertical) {
-                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.")
-                    .font(Font.custom("Inter", size: 20))
-                    .foregroundColor(Color(red: 0.79, green: 0.73, blue: 0.83))
-                    .padding()
+                VStack {
+                    ForEach(starSign.allCases) { sign in
+                        StarSignIconView(sign: sign)
+                    }.scrollTargetLayout()
+                }
                 
-            }.padding()
+            }
+            .scrollTargetBehavior(.viewAligned)
+            .padding()
             
             
         }.modifier(AppBackground())
             
     }
 }
+
+
 
