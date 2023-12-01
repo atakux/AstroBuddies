@@ -21,6 +21,8 @@ struct SignupView: View {
     // this is for navigating to the LoginView when user already had an account
     @Environment(\.dismiss) var dismiss
     
+    @State private var navigateToBirthInfo = false
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -53,26 +55,44 @@ struct SignupView: View {
                 }
                 .padding(.horizontal)
                 
-                NavigationLink(destination: BirthInfoView()) {
-                    // sign up button
-                    Button {
-                        
-                        // TODO: somehow make it so after the user registers their email, username, and password it takes them to the BirthInfoView to input their birth information
-                        
-                        Task {
-                            try await viewModel.signUp(withUsername: username, email: email, password: password)
-                        }
-                        
-                        
-                    } label: {
-                        HStack {
-                            Text("Sign up")
-                        }
-                        .modifier(ButtonTextModifier())
-                    }
-                    .modifier(ButtonModifier())
-                    .padding(.top)
+                
+                NavigationLink(destination: BirthInfoView(), isActive: $navigateToBirthInfo) {
+                    EmptyView()
                 }
+                .hidden()
+                
+                // sign up button
+                Button {
+                    
+                    // TODO: somehow make it so after the user registers their email, username, and password it takes them to the BirthInfoView to input their birth information
+                    
+                    if username != "" && email != "" {
+                        // Assure that email and username were filled out
+                        if password == confirmPassword {
+                            // Assure that the confirmed password is the same as the password
+                            
+                            
+                            navigateToBirthInfo = true
+                        } else {
+                            // TODO: do a pop up saying the passwords dont match
+                            print("passwords dont match")
+                        }
+                    } else {
+                        // TODO: do a pop up saying they didnt enter a username or email
+                        print("you have to enter a username and email")
+                    }
+                    
+                    
+                    
+                } label: {
+                    HStack {
+                        Text("Sign up")
+                    }
+                    .modifier(ButtonTextModifier())
+                }
+                .modifier(ButtonModifier())
+                .padding(.top)
+                
                 
                 
                 

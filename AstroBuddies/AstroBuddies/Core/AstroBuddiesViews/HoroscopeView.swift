@@ -11,6 +11,7 @@ import SwiftData
 
 struct HoroscopeView: View {
     @Environment(\.presentationMode) var presentationMode
+    var model = HoroscopeViewModel()
     
     var body: some View {
         VStack {
@@ -53,10 +54,8 @@ struct HoroscopeView: View {
             // TODO: integrate a horoscope API to replace the placeholder text
             ScrollView(.vertical) {
                 VStack {
-                    ForEach(starSign.allCases) { sign in
-                        StarSignIconView(sign: sign)
-                    }.scrollTargetLayout()
-                }
+                    Text(model.currentHoroscopeText)
+                }.scrollTargetLayout()
                 
             }
             .scrollTargetBehavior(.viewAligned)
