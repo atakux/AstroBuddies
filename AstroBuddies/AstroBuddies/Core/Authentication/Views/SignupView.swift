@@ -56,7 +56,7 @@ struct SignupView: View {
                 .padding(.horizontal)
                 
                 
-                NavigationLink(destination: BirthInfoView(), isActive: $navigateToBirthInfo) {
+                NavigationLink(destination: BirthInfoView(username: username, email: email, password: password), isActive: $navigateToBirthInfo) {
                     EmptyView()
                 }
                 .hidden()

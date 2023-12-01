@@ -7,8 +7,8 @@
 
 import Foundation
 
-enum Starsign: String, CaseIterable, Identifiable {
-    case aries, taurus, gemini, cancer, leo, virgo, libra, scorpio, sagittarius, capricorn, aquarius, pisces
+enum Starsign: String, CaseIterable, Identifiable, Codable {
+    case aries, taurus, gemini, cancer, leo, virgo, libra, scorpio, sagittarius, capricorn, aquarius, pisces, invalid
     
     var id: Int {
         return Starsign.allCases.firstIndex(of: self)! + 1
@@ -53,7 +53,7 @@ enum Starsign: String, CaseIterable, Identifiable {
             case (19...29, 2), (1...20, 3):
                 return .pisces
             default:
-                return .gemini
+                return .invalid
         }
     }
     

@@ -10,6 +10,8 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var viewModel: AuthViewModel
+    @ObservedObject var horoscopeModel = HoroscopeViewModel()
+
     @State private var isSettingsViewActive = false
     @State private var isHoroscopeViewActive = false
     @State private var isMoonInfoViewActive = false
@@ -33,7 +35,7 @@ struct HomeView: View {
                                     .fontWeight(.bold)
                                     .modifier(HeaderModifier())
                                 
-                                Text("sun sign moon sign rising sign")
+                                Text("\(user.sunSign?.rawValue ?? "invalid") moon sign rising sign")
                                     .font(.subheadline)
                                     .modifier(TextModifier())
                             }.padding()
@@ -84,12 +86,15 @@ struct HomeView: View {
                                             // Horoscope details
                                             // TODO: replace placeholder text below with an astrology API text
                                             VStack {
-                                                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.")
+                                                Text(horoscopeModel.currentHoroscopeText)
                                                     .modifier(ContentTextModifier())
                                                     .frame(alignment: .leading)
                                                     .padding()
                                             }.padding(.top, 60)
                                                 .padding(.bottom, 20)
+                                                .onAppear {
+                                                    horoscopeModel.fetchHoroscope(sunSign: user.sunSign ?? .invalid)
+                                                }
                                             
                                             Spacer()
                                             

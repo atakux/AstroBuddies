@@ -7,66 +7,44 @@
 
 import Foundation
 import SwiftUI
-import Observation
 
-@Observable
-class HoroscopeViewModel {
-    
-    var isLoading = false
-    var currentHoroscopeText: String = ""
-    
-    
-    func getHoroscope(for sunSign: Starsign, for moonSign: Starsign, for risingSign: Starsign) async {
-        isLoading = true
-        
-        // Calling OpenAI with the prompt for the user's horoscope
-        let prompt = "give me a horoscope for \(sunSign.rawValue) sun sign, \(moonSign.rawValue) moon sign, and \(risingSign.rawValue) rising sign."
-        let chatGPTURL = URL(string: "https://api.openai.com/v1/chat/completions")!
-        
-        var request = URLRequest(url: chatGPTURL)
-        
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("Bearer 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", forHTTPHeaderField: "Authorization")
+class HoroscopeViewModel: ObservableObject {
+    @Published var currentHoroscopeText = "Loading..."
 
-        let message = GPTMessage(role: "user", content: prompt)
-        let gptBody = GPTBody(model: "gpt-4-0613", messages: [message], max_tokens: 500, stop: ["&&"])
+    func fetchHoroscope(sunSign: Starsign) {
+        let headers = [
+            "X-RapidAPI-Key": "dfa2158044msh6359d946b81ab6ap188d9ejsn419a4d091251",
+            "X-RapidAPI-Host": "horoscope-astrology.p.rapidapi.com"
+        ]
 
-        do {
-            request.httpBody = try JSONEncoder().encode(gptBody)
-            
-            let (data, response) = try await URLSession.shared.data(for: request)
-            
-            print((response as! HTTPURLResponse).statusCode)
-        
-            let horoscope = try JSONDecoder().decode(GPTResponse.self, from: data)
-            
-            currentHoroscopeText = horoscope.choices.first?.message.content ?? "something broke"
-        } catch {
-            print("error: ", error)
-        }
+        var request = URLRequest(url: URL(string: "https://horoscope-astrology.p.rapidapi.com/horoscope?day=today&sunsign=\(sunSign)")!)
+        request.httpMethod = "GET"
+        request.allHTTPHeaderFields = headers
 
+        URLSession.shared.dataTask(with: request) { data, _, error in
+            if let error = error {
+                print("Error fetching horoscope: \(error)")
+                return
+            }
+
+            if let data = data {
+                do {
+                    let horoscope = try JSONDecoder().decode(HoroscopeResponse.self, from: data)
+                    
+                    print(horoscope.horoscope)
+                    DispatchQueue.main.async {
+                        self.currentHoroscopeText = horoscope.horoscope
+                    }
+                } catch {
+                    print("Error decoding horoscope: \(error)")
+                }
+            }
+        }.resume()
     }
-
 }
 
-struct GPTResponse: Decodable {
-    let choices: [GPTChoice]
+
+struct HoroscopeResponse: Codable {
+    let horoscope: String
 }
 
-struct GPTChoice: Decodable {
-    let index: Int
-    let message: GPTMessage
-}
-
-struct GPTBody: Encodable {
-    let model: String
-    let messages: [GPTMessage]
-    let max_tokens: Int
-    let stop: [String]
-}
-
-struct GPTMessage: Codable {
-    let role: String
-    let content: String
-}
