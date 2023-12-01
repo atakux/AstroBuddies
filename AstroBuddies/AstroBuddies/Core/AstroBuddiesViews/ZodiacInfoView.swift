@@ -1,18 +1,18 @@
 //
-//  HoroscopeView.swift
+//  ZodiacSignInfo.swift
 //  AstroBuddies
 //
-//  Created by ataku x on 11/25/23.
+//  Created by ataku x on 11/30/23.
 //
 
 import Foundation
 import SwiftUI
-import SwiftData
 
-struct HoroscopeView: View {
+struct ZodiacInfoView: View {
     @Environment(\.presentationMode) var presentationMode
-    @ObservedObject var horoscopeModel = HoroscopeViewModel()
     @EnvironmentObject var viewModel: AuthViewModel
+    
+    @ObservedObject var zodiacInfoViewModel = ZodiacInfoViewModel()
     
     var body: some View {
         if let user = viewModel.currentUser {
@@ -34,12 +34,15 @@ struct HoroscopeView: View {
                             
                             Spacer(minLength: 2)
                             
-                            // Your Horoscope Title
-                            Text("Your Horoscope")
+                            // Zodiac Title
+                            Image("\(user.sunSign?.rawValue ?? "invalid")-icon")
+                            Text("\(user.sunSign?.rawValue ?? "invalid")")
                                 .font(.title)
                                 .foregroundColor(Color(red: 0.96, green: 0.82, blue: 0.44))
                                 .frame(alignment: .center)
                                 .padding()
+                            Image("\(user.sunSign?.rawValue ?? "invalid")-icon")
+
                             
                             Spacer()
                         }
@@ -55,24 +58,22 @@ struct HoroscopeView: View {
                 // Integrating a horoscope API to give user their horoscope of the day based on their sun sign
                 ScrollView(.vertical) {
                     VStack {
-                        Text(horoscopeModel.currentHoroscopeText)
+                        Text(zodiacInfoViewModel.zodiacInfoText)
                             .font(Font.custom("Inter", size: 20))
                             .foregroundColor(Color(red: 0.79, green: 0.73, blue: 0.83))
                             .padding()
+                            .onAppear {
+                                zodiacInfoViewModel.fetchZodiacInfo(sign: user.sunSign?.rawValue ?? "invalid")
+                            }
                     }.scrollTargetLayout()
                     
                 }
                 .scrollTargetBehavior(.viewAligned)
                 .padding()
-                .onAppear {
-                    horoscopeModel.fetchHoroscope(sunSign: user.sunSign ?? .invalid)
-                }
                 
                 
             }.modifier(AppBackground())
         }
     }
 }
-
-
 

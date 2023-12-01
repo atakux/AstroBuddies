@@ -4,11 +4,17 @@
 //
 //  Created by ataku x on 11/30/23.
 //
+//  API Used: https://rapidapi.com/Alejandro99aru/api/horoscope-astrology/
+//
 
 import Foundation
 import SwiftUI
 
 class HoroscopeViewModel: ObservableObject {
+/*
+  Class that connects to Horoscope Astrology API from RapidAPI to retrieve horoscope information based on a user's sun sign
+ */
+    
     @Published var currentHoroscopeText = "Loading..."
 
     func fetchHoroscope(sunSign: Starsign) {
@@ -21,6 +27,7 @@ class HoroscopeViewModel: ObservableObject {
         request.httpMethod = "GET"
         request.allHTTPHeaderFields = headers
 
+        
         URLSession.shared.dataTask(with: request) { data, _, error in
             if let error = error {
                 print("Error fetching horoscope: \(error)")
@@ -31,7 +38,9 @@ class HoroscopeViewModel: ObservableObject {
                 do {
                     let horoscope = try JSONDecoder().decode(HoroscopeResponse.self, from: data)
                     
-                    print(horoscope.horoscope)
+                    // debuging
+                    // print(horoscope.horoscope)
+                    
                     DispatchQueue.main.async {
                         self.currentHoroscopeText = horoscope.horoscope
                     }
