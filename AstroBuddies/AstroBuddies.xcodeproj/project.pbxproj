@@ -10,6 +10,13 @@
 		0862DA202B12715A009113B8 /* HoroscopeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0862DA1F2B12715A009113B8 /* HoroscopeView.swift */; };
 		0862DA222B12803E009113B8 /* MoonInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0862DA212B12803E009113B8 /* MoonInfoView.swift */; };
 		0862DA282B16B107009113B8 /* StarSignIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0862DA272B16B107009113B8 /* StarSignIconView.swift */; };
+		0862DA2B2B180DA3009113B8 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0862DA2A2B180DA3009113B8 /* Alamofire */; };
+		0862DA2D2B196239009113B8 /* HoroscopeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0862DA2C2B196239009113B8 /* HoroscopeViewModel.swift */; };
+		0862DA302B196FC5009113B8 /* Starsign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0862DA2F2B196FC4009113B8 /* Starsign.swift */; };
+		0862DA322B19BDD6009113B8 /* ZodiacInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0862DA312B19BDD6009113B8 /* ZodiacInfoView.swift */; };
+		0862DA342B19C03D009113B8 /* ZodiacInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0862DA332B19C03D009113B8 /* ZodiacInfoViewModel.swift */; };
+		0862DA362B19CA79009113B8 /* GetMoonInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0862DA352B19CA79009113B8 /* GetMoonInfo.swift */; };
+		0862DA3B2B19D018009113B8 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 0862DA3A2B19D018009113B8 /* SwiftSoup */; };
 		198D8C362B09AC82004A6BD6 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198D8C352B09AC81004A6BD6 /* LoginView.swift */; };
 		198D8C382B09AF67004A6BD6 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198D8C372B09AF66004A6BD6 /* InputView.swift */; };
 		198D8C3A2B09BAA7004A6BD6 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198D8C392B09BAA7004A6BD6 /* SignupView.swift */; };
@@ -82,6 +89,11 @@
 		0862DA1F2B12715A009113B8 /* HoroscopeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoroscopeView.swift; sourceTree = "<group>"; };
 		0862DA212B12803E009113B8 /* MoonInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonInfoView.swift; sourceTree = "<group>"; };
 		0862DA272B16B107009113B8 /* StarSignIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarSignIconView.swift; sourceTree = "<group>"; };
+		0862DA2C2B196239009113B8 /* HoroscopeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoroscopeViewModel.swift; sourceTree = "<group>"; };
+		0862DA2F2B196FC4009113B8 /* Starsign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Starsign.swift; sourceTree = "<group>"; };
+		0862DA312B19BDD6009113B8 /* ZodiacInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZodiacInfoView.swift; sourceTree = "<group>"; };
+		0862DA332B19C03D009113B8 /* ZodiacInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZodiacInfoViewModel.swift; sourceTree = "<group>"; };
+		0862DA352B19CA79009113B8 /* GetMoonInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMoonInfo.swift; sourceTree = "<group>"; };
 		198D8C352B09AC81004A6BD6 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginView.swift; path = ../LoginView.swift; sourceTree = "<group>"; };
 		198D8C372B09AF66004A6BD6 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		198D8C392B09BAA7004A6BD6 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
@@ -115,8 +127,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				198D8C532B09D06F004A6BD6 /* FirebaseDatabase in Frameworks */,
+				0862DA2B2B180DA3009113B8 /* Alamofire in Frameworks */,
 				198D8C612B09D06F004A6BD6 /* FirebaseFunctionsCombine-Community in Frameworks */,
 				198D8C592B09D06F004A6BD6 /* FirebaseFirestore in Frameworks */,
+				0862DA3B2B19D018009113B8 /* SwiftSoup in Frameworks */,
 				198D8C452B09D06F004A6BD6 /* FirebaseAnalyticsSwift in Frameworks */,
 				198D8C412B09D06F004A6BD6 /* FirebaseAnalytics in Frameworks */,
 				198D8C432B09D06F004A6BD6 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
@@ -161,9 +175,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0862DA2E2B196F51009113B8 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				0862DA2C2B196239009113B8 /* HoroscopeViewModel.swift */,
+				0862DA332B19C03D009113B8 /* ZodiacInfoViewModel.swift */,
+				0862DA352B19CA79009113B8 /* GetMoonInfo.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
 		198D8C332B09AC35004A6BD6 /* AstroBuddiesViews */ = {
 			isa = PBXGroup;
 			children = (
+				0862DA312B19BDD6009113B8 /* ZodiacInfoView.swift */,
 				198D8C3B2B09C8A0004A6BD6 /* HomeView.swift */,
 				19CC61E42B0AC6CA0006CC74 /* TarotView.swift */,
 				19CC61E62B0AC6F30006CC74 /* CompatibilityView.swift */,
@@ -200,6 +225,7 @@
 				198D8C372B09AF66004A6BD6 /* InputView.swift */,
 				19CC61EE2B0AE2E10006CC74 /* SettingsRowView.swift */,
 				0862DA272B16B107009113B8 /* StarSignIconView.swift */,
+				0862DA2F2B196FC4009113B8 /* Starsign.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -207,6 +233,7 @@
 		198D8C792B09D1D2004A6BD6 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				0862DA2E2B196F51009113B8 /* View Model */,
 				198D8C332B09AC35004A6BD6 /* AstroBuddiesViews */,
 				198D8C762B09D183004A6BD6 /* Authentication */,
 				198D8C7A2B09D25E004A6BD6 /* Root */,
@@ -367,6 +394,8 @@
 				198D8C702B09D06F004A6BD6 /* FirebaseRemoteConfigSwift */,
 				198D8C722B09D06F004A6BD6 /* FirebaseStorage */,
 				198D8C742B09D06F004A6BD6 /* FirebaseStorageCombine-Community */,
+				0862DA2A2B180DA3009113B8 /* Alamofire */,
+				0862DA3A2B19D018009113B8 /* SwiftSoup */,
 			);
 			productName = AstroBuddies;
 			productReference = 19A5C72C2AEA20330030D62E /* AstroBuddies.app */;
@@ -442,6 +471,8 @@
 			mainGroup = 19A5C7232AEA20330030D62E;
 			packageReferences = (
 				198D8C3F2B09D06E004A6BD6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				0862DA292B180DA3009113B8 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				0862DA392B19D018009113B8 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 			);
 			productRefGroup = 19A5C72D2AEA20330030D62E /* Products */;
 			projectDirPath = "";
@@ -486,11 +517,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0862DA322B19BDD6009113B8 /* ZodiacInfoView.swift in Sources */,
+				0862DA362B19CA79009113B8 /* GetMoonInfo.swift in Sources */,
 				0862DA202B12715A009113B8 /* HoroscopeView.swift in Sources */,
 				198D8C3C2B09C8A1004A6BD6 /* HomeView.swift in Sources */,
 				198D8C362B09AC82004A6BD6 /* LoginView.swift in Sources */,
 				198D8C382B09AF67004A6BD6 /* InputView.swift in Sources */,
 				19A5C75C2AEA2E030030D62E /* Modifiers.swift in Sources */,
+				0862DA342B19C03D009113B8 /* ZodiacInfoViewModel.swift in Sources */,
+				0862DA2D2B196239009113B8 /* HoroscopeViewModel.swift in Sources */,
 				19CC61EF2B0AE2E20006CC74 /* SettingsRowView.swift in Sources */,
 				19A5C7322AEA20330030D62E /* ContentView.swift in Sources */,
 				19CC61E92B0AC72C0006CC74 /* MessageView.swift in Sources */,
@@ -505,6 +540,7 @@
 				19CC61E52B0AC6CB0006CC74 /* TarotView.swift in Sources */,
 				198D8C842B09D585004A6BD6 /* User.swift in Sources */,
 				198D8C812B09D3A3004A6BD6 /* AuthViewModel.swift in Sources */,
+				0862DA302B196FC5009113B8 /* Starsign.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -835,6 +871,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0862DA292B180DA3009113B8 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.8.1;
+			};
+		};
+		0862DA392B19D018009113B8 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.6.1;
+			};
+		};
 		198D8C3F2B09D06E004A6BD6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -847,6 +899,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0862DA2A2B180DA3009113B8 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0862DA292B180DA3009113B8 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		0862DA3A2B19D018009113B8 /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0862DA392B19D018009113B8 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
 		198D8C402B09D06F004A6BD6 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 198D8C3F2B09D06E004A6BD6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

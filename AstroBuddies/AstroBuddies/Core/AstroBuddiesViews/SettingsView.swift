@@ -71,7 +71,7 @@ struct SettingsView: View {
                             
                             // Display user's big 3
                             VStack(alignment: .center) {
-                                Text("sun sign moon sign rising sign")
+                                Text("☉ \(user.sunSign?.rawValue ?? "invalid") ☾ moon sign ↑ rising sign")
                                     .font(.footnote)
                                     .modifier(TextModifier())
                                 

@@ -17,6 +17,7 @@ struct AppBackground: ViewModifier {
                 .frame(width: geometry.size.width, height: geometry.size.height)
                 .background(Color(red: 0.27, green: 0.25, blue: 0.33))
                 .ignoresSafeArea()
+                .accentColor(Color(red: 0.65, green: 0.56, blue: 0.80))
         }.ignoresSafeArea()
         
     }
