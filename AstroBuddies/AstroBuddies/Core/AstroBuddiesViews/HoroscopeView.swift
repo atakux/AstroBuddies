@@ -70,7 +70,7 @@ struct HoroscopeView: View {
                                 .padding()
                         }
                         .onAppear {
-                            horoscopeModel.fetchHoroscope(sunSign: user.sunSign ?? .invalid, time: "today")
+                            horoscopeModel.fetchHoroscope(sunSign: user.sunSign, time: "today")
                         }
                         .frame(width: 354)
                         .background(
@@ -90,7 +90,7 @@ struct HoroscopeView: View {
                             
                         }
                         .onAppear {
-                            horoscopeModel.fetchHoroscope(sunSign: user.sunSign ?? .invalid, time: "month")
+                            horoscopeModel.fetchHoroscope(sunSign: user.sunSign, time: "month")
                         }
                         .frame(width: 354)
                         .background(

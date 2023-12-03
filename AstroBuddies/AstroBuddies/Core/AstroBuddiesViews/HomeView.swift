@@ -7,11 +7,9 @@
 
 import SwiftUI
 
-
 struct HomeView: View {
     
-    // TODO: add a refreshing mechanism so the APIs can stop buggin out when going to different tabs
-    
+    // User data
     @EnvironmentObject var viewModel: AuthViewModel
     
     // View Models for certain screens
@@ -36,6 +34,7 @@ struct HomeView: View {
         VStack {
             if let user = viewModel.currentUser {
                 NavigationView {
+                    
                     VStack {
                         
                         // Top bar
@@ -46,7 +45,7 @@ struct HomeView: View {
                                     .fontWeight(.bold)
                                     .modifier(HeaderModifier())
                                 
-                                Text("☉ \(user.sunSign?.rawValue ?? "invalid") ☾ moon sign ↑ rising sign")
+                                Text("☉ \(user.sunSign.rawValue) ☾ moon sign ↑ rising sign")
                                     .font(.subheadline)
                                     .modifier(TextModifier())
                             }.padding()
@@ -104,7 +103,7 @@ struct HomeView: View {
                                             }.padding(.top, 60)
                                                 .padding(.bottom, 20)
                                                 .onAppear {
-                                                    horoscopeModel.fetchHoroscope(sunSign: user.sunSign ?? .invalid, time: "today")
+                                                    horoscopeModel.fetchHoroscope(sunSign: user.sunSign, time: "today")
                                                 }
                                             
                                             Spacer()
@@ -208,13 +207,13 @@ struct HomeView: View {
                                                 
                                                 VStack {
                                                     
-                                                    Image("\(user.sunSign?.rawValue ?? "invalid")-icon")
+                                                    Image("\(user.sunSign)-icon")
                                                         .padding()
                                                     
                                                     Spacer()
                                                 }
                                                 
-                                                Text("\(user.sunSign?.rawValue ?? "invalid"):")
+                                                Text("\(user.sunSign.rawValue):")
                                                     .fontWeight(.bold)
                                                     .modifier(TitleModifier())
                                                     .frame(alignment: .leading)
@@ -236,7 +235,7 @@ struct HomeView: View {
                                             }.padding(.top, 60)
                                                 .padding(.bottom, 20)
                                                 .onAppear {
-                                                    zodiacInfoModel.fetchZodiacInfo(sign: user.sunSign?.rawValue ?? "invalid")
+                                                    zodiacInfoModel.fetchZodiacInfo(sign: user.sunSign.rawValue)
                                                 }
                                             
                                             Spacer()
@@ -275,16 +274,20 @@ struct HomeView: View {
                             }
                             .padding(.bottom, 90)
                             .scrollTargetBehavior(.viewAligned)
+                            
                         }
+                        
                     }.modifier(AppBackground())
+                    
                 }.modifier(AppBackground())
             }
         }.modifier(AppBackground())
     }
 }
 
-
 func emojiForMoonPhaseString(_ phaseString: String) -> String {
+    // Function to get the proper emoji for the current moon phase
+    
     let camelPhaseStr = convertToCamelCase(phaseString)
     
     switch camelPhaseStr {
@@ -301,8 +304,8 @@ func emojiForMoonPhaseString(_ phaseString: String) -> String {
     
 }
 
-
 func convertToCamelCase(_ input: String) -> String {
+    // Convert a given string into CamelCase
     let words = input.components(separatedBy: " ")
     let camelCaseWords = words.map { $0.prefix(1).capitalized + $0.dropFirst() }
     let camelCaseString = camelCaseWords.joined()

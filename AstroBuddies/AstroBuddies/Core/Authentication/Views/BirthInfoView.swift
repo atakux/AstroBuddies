@@ -28,10 +28,8 @@ struct BirthInfoView: View {
     var body: some View {
         
         VStack(spacing: 12) {
-            // TODO: integrate InputView to add field views for date of birth, time of birth, place of birth
             // TODO: maybe integrate google maps API for place of birth to auto-complete user's place of birth
-            // TODO: add all those details to the database linked to the user
-            
+
             Spacer()
             
             ScrollView(.vertical, showsIndicators: true) {
@@ -105,12 +103,10 @@ struct BirthInfoView: View {
                         let timeOfBirth = timeFormatter.string(from: time)
                         
                         sunSign = Starsign.getSunSign(selectedDateTime)
-                        print(sunSign?.sign ?? "invalid")
+                        print(sunSign!)
                         
                         
                         // TODO: Store date and time of birth in the database
-                        
-                        
                         // TODO: Store user's sun sign, moon sign, and rising sign in database
                         
                         

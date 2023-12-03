@@ -4,6 +4,9 @@
 //
 //  Created by ataku x on 11/30/23.
 //
+//  API used: https://rapidapi.com/Alejandro99aru/api/horoscope-astrology
+//
+//
 
 import Foundation
 import SwiftUI
@@ -38,13 +41,13 @@ struct ZodiacInfoView: View {
                             Spacer(minLength: 2)
                             
                             // Zodiac Title
-                            Image("\(user.sunSign?.rawValue ?? "invalid")-icon")
-                            Text("\(user.sunSign?.rawValue ?? "invalid")")
+                            Image("\(user.sunSign.rawValue)-icon")
+                            Text("\(user.sunSign.rawValue)")
                                 .font(.title)
                                 .foregroundColor(Color(red: 0.96, green: 0.82, blue: 0.44))
                                 .frame(alignment: .center)
                                 .padding()
-                            Image("\(user.sunSign?.rawValue ?? "invalid")-icon")
+                            Image("\(user.sunSign.rawValue)-icon")
 
                             
                             Spacer()
@@ -66,7 +69,7 @@ struct ZodiacInfoView: View {
                             .foregroundColor(Color(red: 0.79, green: 0.73, blue: 0.83))
                             .padding()
                             .onAppear {
-                                zodiacInfoViewModel.fetchZodiacInfo(sign: user.sunSign?.rawValue ?? "invalid")
+                                zodiacInfoViewModel.fetchZodiacInfo(sign: user.sunSign.rawValue)
                             }
                     }
                     .scrollTargetLayout()

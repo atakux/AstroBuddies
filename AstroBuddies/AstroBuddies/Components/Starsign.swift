@@ -57,6 +57,7 @@ enum Starsign: String, CaseIterable, Identifiable, Codable {
         }
     }
     
+    // TODO: figure out how to get moon sign & rising sign
     
     static func getMoonSign(_ date: Date) -> Starsign {
         let calendar = Calendar.current
