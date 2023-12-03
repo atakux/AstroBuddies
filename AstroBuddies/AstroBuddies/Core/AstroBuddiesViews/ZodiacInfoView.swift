@@ -14,6 +14,9 @@ struct ZodiacInfoView: View {
     
     @ObservedObject var zodiacInfoViewModel = ZodiacInfoViewModel()
     
+    // Gradient value for containers
+    let contentGradient = Gradient(colors: [Color(red: 0.19, green: 0.16, blue: 0.18).opacity(0), Color(red: 1, green: 0.95, blue: 0.83).opacity(0.23)])
+    
     var body: some View {
         if let user = viewModel.currentUser {
             VStack {
@@ -65,7 +68,13 @@ struct ZodiacInfoView: View {
                             .onAppear {
                                 zodiacInfoViewModel.fetchZodiacInfo(sign: user.sunSign?.rawValue ?? "invalid")
                             }
-                    }.scrollTargetLayout()
+                    }
+                    .scrollTargetLayout()
+                    .frame(width: 354)
+                    .background(
+                        LinearGradient(gradient: contentGradient, startPoint: .top, endPoint: .bottom)
+                    )
+                    .cornerRadius(22)
                     
                 }
                 .scrollTargetBehavior(.viewAligned)

@@ -9,12 +9,15 @@ import SwiftUI
 
 
 struct HomeView: View {
+    
+    // TODO: add a refreshing mechanism so the APIs can stop buggin out when going to different tabs
+    
     @EnvironmentObject var viewModel: AuthViewModel
     
     // View Models for certain screens
-    @ObservedObject var todaysMoonModel = GetMoonInfo()
-    @ObservedObject var horoscopeModel = HoroscopeViewModel()
-    @ObservedObject var zodiacInfoModel = ZodiacInfoViewModel()
+    @StateObject var todaysMoonModel = GetMoonInfo()
+    @StateObject var horoscopeModel = HoroscopeViewModel()
+    @StateObject var zodiacInfoModel = ZodiacInfoViewModel()
     
     // For the slide ups
     @State private var isSettingsViewActive = false
@@ -94,14 +97,14 @@ struct HomeView: View {
                                             // Horoscope details
                                             // Displays horoscope from Horoscope Astrology API from RapidAPI based on user's sun sign
                                             VStack {
-                                                Text(horoscopeModel.currentHoroscopeText)
+                                                Text(horoscopeModel.todayHoroscopeText)
                                                     .modifier(ContentTextModifier())
                                                     .frame(alignment: .leading)
                                                     .padding()
                                             }.padding(.top, 60)
                                                 .padding(.bottom, 20)
                                                 .onAppear {
-                                                    horoscopeModel.fetchHoroscope(sunSign: user.sunSign ?? .invalid)
+                                                    horoscopeModel.fetchHoroscope(sunSign: user.sunSign ?? .invalid, time: "today")
                                                 }
                                             
                                             Spacer()
@@ -157,6 +160,7 @@ struct HomeView: View {
                                                                 Text("Moon Phase:")
                                                                     .font(.custom("Inter", size: 26).weight(.bold))
                                                                     .foregroundColor(Color(red: 0.73, green: 0.71, blue: 0.98))
+                                                                
                                                                 
                                                                 Text(todaysMoonModel.todayMoonPhase)
                                                                     .font(.custom("Inter", size: 18).weight(.bold))

@@ -14,6 +14,10 @@ struct HoroscopeView: View {
     @ObservedObject var horoscopeModel = HoroscopeViewModel()
     @EnvironmentObject var viewModel: AuthViewModel
     
+    // Gradient value for containers
+    let contentGradient = Gradient(colors: [Color(red: 0.19, green: 0.16, blue: 0.18).opacity(0), Color(red: 1, green: 0.95, blue: 0.83).opacity(0.23)])
+    
+    
     var body: some View {
         if let user = viewModel.currentUser {
             VStack {
@@ -55,18 +59,51 @@ struct HoroscopeView: View {
                 // Integrating a horoscope API to give user their horoscope of the day based on their sun sign
                 ScrollView(.vertical) {
                     VStack {
-                        Text(horoscopeModel.currentHoroscopeText)
-                            .font(Font.custom("Inter", size: 20))
-                            .foregroundColor(Color(red: 0.79, green: 0.73, blue: 0.83))
-                            .padding()
+                        VStack {
+                            Text("Today's Horoscope: ")
+                                .modifier(TitleModifier())
+                                .padding(.bottom)
+                            
+                            Text(horoscopeModel.todayHoroscopeText)
+                                .font(Font.custom("Inter", size: 20))
+                                .foregroundColor(Color(red: 0.79, green: 0.73, blue: 0.83))
+                                .padding()
+                        }
+                        .onAppear {
+                            horoscopeModel.fetchHoroscope(sunSign: user.sunSign ?? .invalid, time: "today")
+                        }
+                        .frame(width: 354)
+                        .background(
+                            LinearGradient(gradient: contentGradient, startPoint: .top, endPoint: .bottom)
+                        )
+                        .cornerRadius(22)
+                        
+                        VStack {
+                            Text("Month's Horoscope: ")
+                                .modifier(TitleModifier())
+                                .padding(.bottom)
+                            
+                            Text(horoscopeModel.monthHoroscopeText)
+                                .font(Font.custom("Inter", size: 20))
+                                .foregroundColor(Color(red: 0.79, green: 0.73, blue: 0.83))
+                                .padding()
+                            
+                        }
+                        .onAppear {
+                            horoscopeModel.fetchHoroscope(sunSign: user.sunSign ?? .invalid, time: "month")
+                        }
+                        .frame(width: 354)
+                        .background(
+                            LinearGradient(gradient: contentGradient, startPoint: .top, endPoint: .bottom)
+                        )
+                        .cornerRadius(22)
+                        
                     }.scrollTargetLayout()
                     
                 }
                 .scrollTargetBehavior(.viewAligned)
                 .padding()
-                .onAppear {
-                    horoscopeModel.fetchHoroscope(sunSign: user.sunSign ?? .invalid)
-                }
+                
                 
                 
             }.modifier(AppBackground())

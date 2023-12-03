@@ -84,8 +84,6 @@ struct BirthInfoView: View {
                     
                     // Submit selected user data into database in Firebase
                     Button {
-                        sunSign = Starsign.getSunSign(selectedDateTime)
-                        print(sunSign?.sign ?? "invalid")
                         
                         let calendar = Calendar.current
                         let dateComponents = calendar.dateComponents([.year, .month, .day], from: selectedDateTime)
@@ -105,6 +103,10 @@ struct BirthInfoView: View {
                         let timeFormatter = DateFormatter()
                         timeFormatter.dateFormat = "HH:mm"
                         let timeOfBirth = timeFormatter.string(from: time)
+                        
+                        sunSign = Starsign.getSunSign(selectedDateTime)
+                        print(sunSign?.sign ?? "invalid")
+                        
                         
                         // TODO: Store date and time of birth in the database
                         
