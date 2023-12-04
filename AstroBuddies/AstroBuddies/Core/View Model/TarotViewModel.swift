@@ -15,6 +15,29 @@ import Combine
 class TarotViewModel: ObservableObject {
     @Published var tarotCards: [TarotCard] = []
     
+    // Store the last fetch date
+    private var lastFetchDate: Date? {
+        get { UserDefaults.standard.object(forKey: "LastFetchDate") as? Date }
+        set { UserDefaults.standard.set(newValue, forKey: "LastFetchDate") }
+    }
+    
+    init() {
+        // Fetch tarot cards when the app is launched
+        fetchTarotCardsIfNeeded()
+    }
+    
+    // Function to fetch tarot cards only if a day has passed since the last fetch
+    func fetchTarotCardsIfNeeded() {
+        guard let lastFetchDate = lastFetchDate else {
+            fetchTarotCards()
+            return
+        }
+        
+        if !Calendar.current.isDateInToday(lastFetchDate) {
+            fetchTarotCards()
+        }
+    }
+    
     func fetchTarotCards() {
         // Replace this URL with your actual API endpoint
         guard let url = URL(string: "https://horoscope-astrology.p.rapidapi.com/threetarotcards") else {
@@ -45,6 +68,8 @@ class TarotViewModel: ObservableObject {
                 }
             }
         }.resume()
+        
+        lastFetchDate = Date()
     }
 }
 
@@ -58,7 +83,7 @@ struct TarotCardResponse: Decodable {
     let desc: String
 }
 
-struct TarotCard: Identifiable {
+struct TarotCard: Identifiable, Equatable, Codable {
     let id = UUID()
     let name: String
     let image: String
