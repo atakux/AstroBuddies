@@ -1,0 +1,73 @@
+//
+//  TarotViewModel.swift
+//  AstroBuddies
+//
+//  Created by ataku x on 12/3/23.
+//
+//
+//
+//
+
+import Foundation
+import SwiftUI
+import Combine
+
+class TarotViewModel: ObservableObject {
+    @Published var tarotCards: [TarotCard] = []
+    
+    func fetchTarotCards() {
+        // Replace this URL with your actual API endpoint
+        guard let url = URL(string: "https://horoscope-astrology.p.rapidapi.com/threetarotcards") else {
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.addValue("dfa2158044msh6359d946b81ab6ap188d9ejsn419a4d091251", forHTTPHeaderField: "X-RapidAPI-Key")
+        request.addValue("horoscope-astrology.p.rapidapi.com", forHTTPHeaderField: "X-RapidAPI-Host")
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Error fetching tarot cards: \(error)")
+                return
+            }
+            
+            if let data = data {
+                do {
+                    let decoder = JSONDecoder()
+                    let tarotResponse = try decoder.decode(TarotResponse.self, from: data)
+                    DispatchQueue.main.async {
+                        self.tarotCards = tarotResponse.res.map {
+                            TarotCard(name: $0.name, image: "\(removeSpaces(from: $0.name))", description: $0.desc)
+                        }
+                    }
+                } catch {
+                    print("Error decoding tarot cards: \(error)")
+                }
+            }
+        }.resume()
+    }
+}
+
+struct TarotResponse: Decodable {
+    let res: [TarotCardResponse]
+}
+
+struct TarotCardResponse: Decodable {
+    let name: String
+    let image: String
+    let desc: String
+}
+
+struct TarotCard: Identifiable {
+    let id = UUID()
+    let name: String
+    let image: String
+    let description: String
+    
+    static let placeholder = TarotCard(name: "Placeholder", image: "CardBacks", description: "No card available")
+}
+
+func removeSpaces(from input: String) -> String {
+    let result = input.replacingOccurrences(of: " ", with: "")
+    return result
+}

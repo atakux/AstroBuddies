@@ -4,6 +4,8 @@
 //
 //  Created by ataku x on 11/25/23.
 //
+//  API used: https://rapidapi.com/MoonAPIcom/api/moon-phase
+//
 
 import SwiftUI
 

@@ -4,6 +4,9 @@
 //
 //  Created by ataku x on 11/18/23.
 //
+//  APIs Used:
+//      - Moon Info: https://rapidapi.com/MoonAPIcom/api/moon-phase
+//      - Horoscope/Zodiac Sign Info: https://rapidapi.com/Alejandro99aru/api/horoscope-astrology/
 
 import SwiftUI
 

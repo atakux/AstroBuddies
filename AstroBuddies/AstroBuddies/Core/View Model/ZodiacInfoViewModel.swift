@@ -4,6 +4,8 @@
 //
 //  Created by ataku x on 11/30/23.
 //
+//  API Used: https://rapidapi.com/Alejandro99aru/api/horoscope-astrology/
+//
 
 import Foundation
 
@@ -35,9 +37,8 @@ class ZodiacInfoViewModel: ObservableObject {
             }
 
             if let data = data {
-                let jsonString = String(data: data, encoding: .utf8)
-                
                 // debug
+                let jsonString = String(data: data, encoding: .utf8)
                 // print("Received JSON: \(jsonString ?? "Invalid JSON")")
 
                 do {
