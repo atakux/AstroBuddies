@@ -4,8 +4,8 @@
 //
 //  Created by ataku x on 12/3/23.
 //
-//
-//
+//  API used: https://rapidapi.com/Alejandro99aru/api/horoscope-astrology
+//  Images from: https://luciellaes.itch.io/rider-waite-smith-tarot-cards-cc0
 //
 
 import Foundation
@@ -26,7 +26,7 @@ class TarotViewModel: ObservableObject {
         fetchTarotCardsIfNeeded()
     }
     
-    // Function to fetch tarot cards only if a day has passed since the last fetch
+    // Function to fetch tarot cards only if a day has passed since the last fetch, so that it doesn't refresh every time app is opened.
     func fetchTarotCardsIfNeeded() {
         guard let lastFetchDate = lastFetchDate else {
             fetchTarotCards()
@@ -39,7 +39,7 @@ class TarotViewModel: ObservableObject {
     }
     
     func fetchTarotCards() {
-        // Replace this URL with your actual API endpoint
+        // Fetching tarot cards from the API
         guard let url = URL(string: "https://horoscope-astrology.p.rapidapi.com/threetarotcards") else {
             return
         }
@@ -56,6 +56,7 @@ class TarotViewModel: ObservableObject {
             
             if let data = data {
                 do {
+                    // create the TarotCards based on what was fetched from the API
                     let decoder = JSONDecoder()
                     let tarotResponse = try decoder.decode(TarotResponse.self, from: data)
                     DispatchQueue.main.async {
@@ -84,7 +85,8 @@ struct TarotCardResponse: Decodable {
 }
 
 struct TarotCard: Identifiable, Equatable, Codable {
-    let id = UUID()
+    // TarotCard object
+    var id = UUID()
     let name: String
     let image: String
     let description: String
@@ -93,6 +95,7 @@ struct TarotCard: Identifiable, Equatable, Codable {
 }
 
 func removeSpaces(from input: String) -> String {
+    // Function to remove the spaces in a string
     let result = input.replacingOccurrences(of: " ", with: "")
     return result
 }

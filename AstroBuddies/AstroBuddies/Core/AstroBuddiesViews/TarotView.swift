@@ -4,6 +4,10 @@
 //
 //  Created by ataku x on 11/19/23.
 //
+//  API used: https://rapidapi.com/Alejandro99aru/api/horoscope-astrology
+//  Images from: https://luciellaes.itch.io/rider-waite-smith-tarot-cards-cc0
+//
+
 
 import SwiftUI
 
