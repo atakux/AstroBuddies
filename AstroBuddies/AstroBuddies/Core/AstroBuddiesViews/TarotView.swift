@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct TarotView: View {
+    // Initializations
     @StateObject private var tarotViewModel = TarotViewModel()
     @State private var selectedCard: TarotCard? = nil
+    
+    @State private var isCardSelected = false
     @State private var isFlipped = false
     @State private var cardsFlipped = false
     
+    // Gradient for the background
     let contentGradient = Gradient(colors: [Color(red: 0.19, green: 0.16, blue: 0.18).opacity(0), Color(red: 1, green: 0.95, blue: 0.83).opacity(0.23)])
     
     // Top edge value
@@ -89,12 +93,14 @@ struct TarotView: View {
                             ForEach(tarotViewModel.tarotCards) { card in
                                 
                                 // Changing disks to pentacles and clubs to wands to match how it is properly called.
-                                var cardname = card.name
-                                var cardNamedp = cardname.replacingOccurrences(of: "Disks", with: "Pentacles")
-                                var cardName = cardNamedp.replacingOccurrences(of: "Clubs", with: "Wands")
+                                let cardname = card.name
+                                let cardNamedp = cardname.replacingOccurrences(of: "Disks", with: "Pentacles")
+                                let cardName = cardNamedp.replacingOccurrences(of: "Clubs", with: "Wands")
                                 
-                                // TODO: make pages for the Buttons for each card to view description
+                                // Buttons lead to screens displaying more details about the tarot card that was clicked on
                                 Button {
+                                    isCardSelected = true
+                                    selectedCard = card
                                     print("clicked \(cardName)")
                                 } label: {
                                     
@@ -119,22 +125,25 @@ struct TarotView: View {
                                             VStack {
                                                 Text(card.description)
                                                     .modifier(TextModifier())
-                                                
                                             }
                                         }
-                                        
                                     }
                                     .frame(width: 360)
-                                    
-                                    
-                                    
                                 }.padding(.horizontal)
                                 
                             }.padding(.horizontal)
                         }
                         .scrollTargetLayout()
-                        
-                        
+                    }
+                    .sheet(isPresented: Binding(
+                        get: { isCardSelected && selectedCard != nil },
+                        set: { isCardSelected = $0 }
+                    )) {
+                        // Go to the details page of the selected card
+                        if let selectedCard = selectedCard {
+                            TarotCardDetailsView(card: selectedCard)
+                                .interactiveDismissDisabled()
+                        }
                     }
                     .scrollTargetBehavior(.viewAligned)
                     .background(
