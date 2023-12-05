@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0862DA202B12715A009113B8 /* HoroscopeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0862DA1F2B12715A009113B8 /* HoroscopeView.swift */; };
-		0862DA222B12803E009113B8 /* MoonInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0862DA212B12803E009113B8 /* MoonInfoView.swift */; };
 		0862DA282B16B107009113B8 /* StarSignIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0862DA272B16B107009113B8 /* StarSignIconView.swift */; };
 		0862DA2B2B180DA3009113B8 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0862DA2A2B180DA3009113B8 /* Alamofire */; };
 		0862DA2D2B196239009113B8 /* HoroscopeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0862DA2C2B196239009113B8 /* HoroscopeViewModel.swift */; };
@@ -90,7 +89,6 @@
 
 /* Begin PBXFileReference section */
 		0862DA1F2B12715A009113B8 /* HoroscopeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoroscopeView.swift; sourceTree = "<group>"; };
-		0862DA212B12803E009113B8 /* MoonInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonInfoView.swift; sourceTree = "<group>"; };
 		0862DA272B16B107009113B8 /* StarSignIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarSignIconView.swift; sourceTree = "<group>"; };
 		0862DA2C2B196239009113B8 /* HoroscopeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoroscopeViewModel.swift; sourceTree = "<group>"; };
 		0862DA2F2B196FC4009113B8 /* Starsign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Starsign.swift; sourceTree = "<group>"; };
@@ -203,7 +201,6 @@
 				19CC61E82B0AC72B0006CC74 /* MessageView.swift */,
 				19CC61EA2B0AC9E70006CC74 /* SettingsView.swift */,
 				0862DA1F2B12715A009113B8 /* HoroscopeView.swift */,
-				0862DA212B12803E009113B8 /* MoonInfoView.swift */,
 			);
 			path = AstroBuddiesViews;
 			sourceTree = "<group>";
@@ -546,7 +543,6 @@
 				19CC61EB2B0AC9E70006CC74 /* SettingsView.swift in Sources */,
 				19A5C7302AEA20330030D62E /* AstroBuddiesApp.swift in Sources */,
 				19CC61E72B0AC6F30006CC74 /* CompatibilityView.swift in Sources */,
-				0862DA222B12803E009113B8 /* MoonInfoView.swift in Sources */,
 				19A5C75F2AEAF8780030D62E /* TabBar.swift in Sources */,
 				19CC61E52B0AC6CB0006CC74 /* TarotView.swift in Sources */,
 				08912C6F2B1D9393003EFBAB /* TarotCardDetailsView.swift in Sources */,

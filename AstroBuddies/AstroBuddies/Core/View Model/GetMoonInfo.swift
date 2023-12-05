@@ -4,11 +4,6 @@
 //
 //  Created by ataku x on 12/1/23.
 //
-//  API used: https://rapidapi.com/MoonAPIcom/api/moon-phase
-//
-
-import Foundation
-
 
 import Foundation
 
