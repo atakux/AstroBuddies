@@ -185,6 +185,10 @@ struct TarotCardView: View {
                 // Front of the card
                 CardContent(image: card.image)
                     .opacity(isFlipped ? 1 : 0)
+                    .rotation3DEffect(
+                        .degrees(isFlipped ? 180 : 0),
+                        axis: (x: 0.0, y: 1.0, z: 0.0)
+                    )
                 
                 // Back of the card
                 CardContent(image: "CardBacks")
