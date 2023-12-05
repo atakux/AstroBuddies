@@ -23,7 +23,6 @@ struct HomeView: View {
     // For the slide ups
     @State private var isSettingsViewActive = false
     @State private var isHoroscopeViewActive = false
-    @State private var isMoonInfoViewActive = false
     @State private var isZodiacInfoViewActive = false
     
     // Top edge value
@@ -151,41 +150,35 @@ struct HomeView: View {
                                             VStack(alignment: .leading) {
                                                 Spacer()
                                                 HStack {
-                                                    Button {
-                                                        isMoonInfoViewActive.toggle()
-                                                    } label: {
+                                                    HStack {
+                                                        // Display the current Moon Phase and an emoji of it
                                                         
-                                                        HStack {
-                                                            // Display the current Moon Phase and an emoji of it
-                                                            
-                                                            VStack(alignment: .leading) {
-                                                                Text("Moon Phase:")
-                                                                    .font(.custom("Inter", size: 26).weight(.bold))
-                                                                    .foregroundColor(Color(red: 0.73, green: 0.71, blue: 0.98))
-                                                                
-                                                                
-                                                                Text(todaysMoonModel.todayMoonPhase)
-                                                                    .font(.custom("Inter", size: 18).weight(.bold))
-                                                                                                                            }
-                                                            
-                                                            Spacer()
-                                                            
-                                                            Text(emojiForMoonPhaseString(todaysMoonModel.todayMoonPhase))
-                                                                .font(.custom("Inter", size: 50))
-                                                                .padding()
-                                                                .padding(.trailing, 10)
+                                                        VStack(alignment: .leading) {
+                                                            Text("Moon Phase:")
+                                                                .font(.custom("Inter", size: 26).weight(.bold))
+                                                                .foregroundColor(Color(red: 0.73, green: 0.71, blue: 0.98))
                                                             
                                                             
-                                                        }.padding(.top, 20)
-                                                            .onAppear {
-                                                                todaysMoonModel.fetchMoonPhaseData()
-                                                                
-                                                            }
+                                                            Text(todaysMoonModel.todayMoonPhase)
+                                                                .font(.custom("Inter", size: 18).weight(.bold))
+                                                                .foregroundColor(Color.accentColor)
+                                                                                                                        }
+                                                        
+                                                        Spacer()
+                                                        
+                                                        Text(emojiForMoonPhaseString(todaysMoonModel.todayMoonPhase))
+                                                            .font(.custom("Inter", size: 50))
+                                                            .padding()
+                                                            .padding(.trailing, 10)
+                                                        
+                                                        
                                                     }
-                                                    .sheet(isPresented: $isMoonInfoViewActive) {
-                                                        MoonInfoView()
-                                                            .interactiveDismissDisabled()
+                                                    .padding(.top, 20)
+                                                    .onAppear {
+                                                        todaysMoonModel.fetchMoonPhaseData()
+                                                        
                                                     }
+                                                    
                                                     .padding(.horizontal)
                                                     .frame(alignment: .leading)
                                                     Spacer()
@@ -216,7 +209,7 @@ struct HomeView: View {
                                                     Spacer()
                                                 }
                                                 
-                                                Text("\(user.sunSign.rawValue):")
+                                                Text("\(user.sunSign.rawValue.capitalized):")
                                                     .fontWeight(.bold)
                                                     .modifier(TitleModifier())
                                                     .frame(alignment: .leading)
