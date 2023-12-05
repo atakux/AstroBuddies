@@ -216,7 +216,7 @@ struct HomeView: View {
                                                     Spacer()
                                                 }
                                                 
-                                                Text("\(user.sunSign.rawValue):")
+                                                Text("\(user.sunSign.rawValue.capitalized):")
                                                     .fontWeight(.bold)
                                                     .modifier(TitleModifier())
                                                     .frame(alignment: .leading)

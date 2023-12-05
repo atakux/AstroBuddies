@@ -4,6 +4,8 @@
 //
 //  Created by ataku x on 11/19/23.
 //
+//  API Used: https://rapidapi.com/Alejandro99aru/api/horoscope-astrology/
+//
 
 import SwiftUI
 

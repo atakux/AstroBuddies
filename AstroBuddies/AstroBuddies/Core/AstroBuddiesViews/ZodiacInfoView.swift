@@ -42,7 +42,7 @@ struct ZodiacInfoView: View {
                             
                             // Zodiac Title
                             Image("\(user.sunSign.rawValue)-icon")
-                            Text("\(user.sunSign.rawValue)")
+                            Text("\(user.sunSign.rawValue.capitalized)")
                                 .font(.title)
                                 .foregroundColor(Color(red: 0.96, green: 0.82, blue: 0.44))
                                 .frame(alignment: .center)
