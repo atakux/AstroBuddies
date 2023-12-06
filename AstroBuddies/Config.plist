@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>MoonAPIHost</key>
+	<string>moon-phase.p.rapidapi.com</string>
+	<key>APIHost</key>
+	<string>horoscope-astrology.p.rapidapi.com</string>
+	<key>APIKey</key>
+	<string>dfa2158044msh6359d946b81ab6ap188d9ejsn419a4d091251</string>
+</dict>
+</plist>

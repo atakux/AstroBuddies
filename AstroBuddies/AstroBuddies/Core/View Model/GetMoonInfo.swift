@@ -11,6 +11,14 @@ class GetMoonInfo: ObservableObject {
     @Published var todayMoonPhase = ""
     
     func fetchMoonPhaseData() {
+        guard let path = Bundle.main.path(forResource: "Config", ofType: "plist"),
+              let configDict = NSDictionary(contentsOfFile: path),
+              let APIKey = configDict["APIKey"] as? String,
+              let MoonAPIHost = configDict["MoonAPIHost"] as? String else {
+            print("Error reading Config.plist or missing keys.")
+            return
+        }
+        
         guard let url = URL(string: "https://moon-phase.p.rapidapi.com/advanced?lat=51.4768&lon=-0.0004") else {
             return
         }
@@ -18,8 +26,8 @@ class GetMoonInfo: ObservableObject {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.allHTTPHeaderFields = [
-            "X-RapidAPI-Key": "dfa2158044msh6359d946b81ab6ap188d9ejsn419a4d091251",
-            "X-RapidAPI-Host": "moon-phase.p.rapidapi.com"
+            "X-RapidAPI-Key": APIKey,
+            "X-RapidAPI-Host": MoonAPIHost
         ]
 
         let session = URLSession.shared

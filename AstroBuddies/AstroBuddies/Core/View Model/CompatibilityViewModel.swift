@@ -11,9 +11,17 @@ class CompatibilityViewModel: ObservableObject {
     @Published var compatibilityData: [CompatibilityModel] = []
     
     func fetchCompatibility(sign1: String, sign2: String) {
+        guard let path = Bundle.main.path(forResource: "Config", ofType: "plist"),
+              let configDict = NSDictionary(contentsOfFile: path),
+              let APIKey = configDict["APIKey"] as? String,
+              let APIHost = configDict["APIHost"] as? String else {
+            print("Error reading Config.plist or missing keys.")
+            return
+        }
+        
         // Replace the API key and host with your actual values
-        let apiKey = "dfa2158044msh6359d946b81ab6ap188d9ejsn419a4d091251"
-        let host = "horoscope-astrology.p.rapidapi.com"
+        let apiKey = APIKey
+        let host = APIHost
         
         let url = URL(string: "https://horoscope-astrology.p.rapidapi.com/affinity?sign1=\(sign1)&sign2=\(sign2)")!
         

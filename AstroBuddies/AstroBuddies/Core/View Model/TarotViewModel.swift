@@ -39,14 +39,22 @@ class TarotViewModel: ObservableObject {
     }
     
     func fetchTarotCards() {
+        guard let path = Bundle.main.path(forResource: "Config", ofType: "plist"),
+              let configDict = NSDictionary(contentsOfFile: path),
+              let APIKey = configDict["APIKey"] as? String,
+              let APIHost = configDict["APIHost"] as? String else {
+            print("Error reading Config.plist or missing keys.")
+            return
+        }
+        
         // Fetching tarot cards from the API
         guard let url = URL(string: "https://horoscope-astrology.p.rapidapi.com/threetarotcards") else {
             return
         }
         
         var request = URLRequest(url: url)
-        request.addValue("dfa2158044msh6359d946b81ab6ap188d9ejsn419a4d091251", forHTTPHeaderField: "X-RapidAPI-Key")
-        request.addValue("horoscope-astrology.p.rapidapi.com", forHTTPHeaderField: "X-RapidAPI-Host")
+        request.addValue(APIKey, forHTTPHeaderField: "X-RapidAPI-Key")
+        request.addValue(APIHost, forHTTPHeaderField: "X-RapidAPI-Host")
         
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
