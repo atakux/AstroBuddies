@@ -11,6 +11,9 @@ struct SettingsView: View {
     
     @EnvironmentObject var viewModel: AuthViewModel
     @Environment(\.presentationMode) var presentationMode
+    @State private var navigateToProfileView = true // 20231214 H Son
+    @State private var isProfileViewActive = false // 20231214 H Son
+    @State var selectedDateTime: Date = .now // Combine date and time into a single property
     
     var body: some View {
         
@@ -89,15 +92,20 @@ struct SettingsView: View {
                     
                     // Profile Settings
                     /*
-                        Allows user to make changes to their profile and birth information
+                     Allows user to make changes to their profile and birth information
                      */
                     Button {
-                        // TODO: implement a function for the user to edit their birth information that they entered when they first created an account
-                        print("profile settings button clicked")
+                            // TODO: implement a function for the user to edit their birth information that they entered when they first created an account
+                            print("profile settings button clicked")
+                        isProfileViewActive.toggle()
+        
                     } label: {
-                        SettingsRowView(imageName: "person.fill", title: "Profile Settings", tintColour: .purple)
+                            SettingsRowView(imageName: "person.fill", title: "Profile Settings", tintColour: .purple)
                     }.modifier(SettingsButtonModifier())
-                    
+                    .sheet(isPresented: $isProfileViewActive) {
+                            ProfileView()
+                                .interactiveDismissDisabled()
+                    }
                     // Logout Button
                     /*
                         Logs current user out of their session from AstroBuddies & Firebase

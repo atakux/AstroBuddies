@@ -71,6 +71,7 @@
 		19CC61EF2B0AE2E20006CC74 /* SettingsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CC61EE2B0AE2E10006CC74 /* SettingsRowView.swift */; };
 		3F59BE162B203255004D4F63 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F59BE152B203255004D4F63 /* Message.swift */; };
 		3F59BE182B2038D1004D4F63 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F59BE172B2038D1004D4F63 /* MessageViewModel.swift */; };
+		66130CD72B2C1B5100323753 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66130CD62B2C1B5100323753 /* ProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +130,7 @@
 		19CC61EE2B0AE2E10006CC74 /* SettingsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowView.swift; sourceTree = "<group>"; };
 		3F59BE152B203255004D4F63 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		3F59BE172B2038D1004D4F63 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
+		66130CD62B2C1B5100323753 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +210,7 @@
 				19CC61E82B0AC72B0006CC74 /* MessageView.swift */,
 				19CC61EA2B0AC9E70006CC74 /* SettingsView.swift */,
 				0862DA1F2B12715A009113B8 /* HoroscopeView.swift */,
+				66130CD62B2C1B5100323753 /* ProfileView.swift */,
 			);
 			path = AstroBuddiesViews;
 			sourceTree = "<group>";
@@ -544,6 +547,7 @@
 				0862DA342B19C03D009113B8 /* ZodiacInfoViewModel.swift in Sources */,
 				0862DA2D2B196239009113B8 /* HoroscopeViewModel.swift in Sources */,
 				19CC61EF2B0AE2E20006CC74 /* SettingsRowView.swift in Sources */,
+				66130CD72B2C1B5100323753 /* ProfileView.swift in Sources */,
 				19A5C7322AEA20330030D62E /* ContentView.swift in Sources */,
 				19CC61E92B0AC72C0006CC74 /* MessageView.swift in Sources */,
 				08912C752B1FB06F003EFBAB /* CompatibilityViewModel.swift in Sources */,
