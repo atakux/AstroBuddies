@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "71CA13E6-6ADD-4FD8-9D5D-DBCC4B67760D"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3C2BF932-996F-43C1-9160-2A451E718CB6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AstroBuddies/Core/View Model/CompatibilityViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "fetchCompatibility(sign1:sign2:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3C2BF932-996F-43C1-9160-2A451E718CB6 - 1f65ebff87fe647f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in AstroBuddies.CompatibilityViewModel.fetchCompatibility(sign1: Swift.String, sign2: Swift.String) -&gt; ()"
+                  moduleName = "AstroBuddies"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tvirata/Desktop/CPSC-411-Final-Project/AstroBuddies/AstroBuddies/Core/View%20Model/CompatibilityViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "596">
+               </Location>
+               <Location
+                  uuid = "3C2BF932-996F-43C1-9160-2A451E718CB6 - fc6951ad5044df2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in AstroBuddies.CompatibilityViewModel.fetchCompatibility(sign1: Swift.String, sign2: Swift.String) -&gt; ()"
+                  moduleName = "AstroBuddies"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tvirata/Desktop/CPSC-411-Final-Project/AstroBuddies/AstroBuddies/Core/View%20Model/CompatibilityViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BFFDA240-546A-444D-B329-D9B53DA772BD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AstroBuddies/Components/Tab Bar/TabBar.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

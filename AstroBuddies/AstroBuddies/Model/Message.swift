@@ -9,7 +9,9 @@ import Foundation
 
 struct Message: Identifiable, Codable {
     var id = UUID()
-    let user: String
-    let text: String
+    var senderId: String
+    var receiverId: String
+    var text: String
+    var timestamp: Date
     
 }

@@ -8,7 +8,7 @@
 import Foundation
 import Firebase
 import FirebaseFirestoreSwift
-
+import FirebaseAuth
 
 protocol AuthenticationFormProtocol {
     // determine if the form is properly filled out
@@ -61,11 +61,12 @@ class AuthViewModel: ObservableObject {
         }
     }
     
-    func signUp(withUsername username: String, email: String, password: String, sunSign: Starsign) async throws {
+    func signUp(withUsername username: String, email: String, password: String, sunSign: Starsign, dateOfBirth: Date, timeOfBirth: String, placeOfBirth: String) async throws {
         /*
          createUser function
             - takes in username, email, password
          */
+        
         
         // TODO: password encryption/authentication
         
@@ -75,7 +76,8 @@ class AuthViewModel: ObservableObject {
             self.userSession = result.user
             
             // creating a user object corresponding to the User model
-            let user = User(id: result.user.uid, username: username, email: email, sunSign: sunSign)
+            // dateOfBirth, timeOfBirth, placeOfBirth added by hyson 20231208
+            let user = User(id: result.user.uid, username: username, email: email, dateOfBirth: dateOfBirth, timeOfBirth: timeOfBirth, placeOfBirth: placeOfBirth, sunSign: sunSign)
             
             // encode the user thru the Codable protocol
             let encodedUser = try Firestore.Encoder().encode(user)
@@ -133,3 +135,6 @@ class AuthViewModel: ObservableObject {
         
     }
 }
+
+
+

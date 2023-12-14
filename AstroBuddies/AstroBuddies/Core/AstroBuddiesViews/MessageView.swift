@@ -1,98 +1,105 @@
-//
-//  MessageView.swift
-//  AstroBuddies
-//
-//  Created by ataku x on 11/19/23.
-//
-
+// ContentView.swift
 import SwiftUI
+import FirebaseAuth
 
-struct MessageView: View {
-    
-    // Gradient for the background
-    let contentGradient = Gradient(colors: [Color(red: 0.19, green: 0.16, blue: 0.18).opacity(0), Color(red: 1, green: 0.95, blue: 0.83).opacity(0.23)])
-    
-    // Top edge value
-    @State var top = UIApplication.shared.windows.first?.safeAreaInsets.top
-    
+
+struct ShowUsersView: View {
+    @ObservedObject var usersVM = UsersViewModel()
+    // color codes
+    let currColor = Color(red: 0.21, green: 0.34, blue: 0.57) // sender/currentUser color
+    let recvColor = Color(red: 0.37, green: 0.35, blue: 0.64) // receiver/selectedUSer color
+    let headerTextColor = Color(red: 0.96, green: 0.82, blue: 0.44) // header text color
+    let headerColor = Color(red: 0.19, green: 0.16, blue: 0.18) // header background color
+    let bg = Color(red: 0.25, green: 0.25, blue: 0.33) // main app background color
     var body: some View {
         VStack {
-            VStack {
-                VStack {
-                    VStack {
-                        Conversation()
-                    }.padding(.horizontal)
-                }.frame(alignment: .leading)
-            }.padding()
-            
-//            VStack {
-//                // Top bar
-//                VStack {
-//                    HStack(alignment: .center) {
-//                        VStack(alignment: .leading) {
-//                            HStack {
-//                                Spacer(minLength: 2)
-//                                // Message Title
-//                                Text("Message")
-//                                    .font(.title)
-//                                    .foregroundColor(Color(red: 0.96, green: 0.82, blue: 0.44))
-//                                    .frame(alignment: .center)
-//                                    .padding(.top, top)
-//                                
-//                                Spacer()
-//                                
-//                            }.padding(.horizontal)
-//                                .padding(.leading, 10)
-//                        }
-//                        .padding(.horizontal)
-//                    }.frame(alignment: .leading)
-//                }
-//                .padding()
-//            }
-            
-            
-        }.modifier(AppBackground())
-    }
-}
-
-struct Conversation: View {
-    @State var message = ""
-    @ObservedObject var viewModel = MessageViewModel()
-    
-    var body: some View {
-        VStack {
-            ScrollView {
-                ForEach(viewModel.messages) {
-                    msg in
-                    HStack{
-                        HStack {
-                            Text("\(msg.user): \(msg.text)")
-                                .foregroundColor(.white)
-                        } .padding()
-                            .background(Color.blue)
-                            .cornerRadius(8)
-                    }.padding(.horizontal)
-                        .padding(.top, 8)
+            NavigationView {
+                // populate list with array of users from UsersViewModel
+                List(usersVM.users) { user in
+                    // nagivate to MessageView to view chat logs between current user and selected user
+                    NavigationLink(destination: MessageView(selectedUser: user)) {
+                        Text(user.username)
+                    }.listRowBackground(recvColor)
+                        .foregroundColor(.white)
                 }
+                .navigationBarTitle("Users") // All users menu
+                .border(.black)
+                .background(bg)
+                .scrollContentBackground(.hidden)
             }
-            HStack {
-                TextField("Enter message: ", text: $message)
-                Button("Send") {
-                    sendMessage()
-                }
+            .onAppear {
+                usersVM.fetchUsers()
             }
         }
     }
-    func sendMessage() {
-        guard !message.isEmpty else {return}
-        viewModel.sendMessage(content: message)
-        message = ""
-    }
 }
 
-
-struct MessageView_Previews: PreviewProvider {
-    static var previews: some View {
-        MessageView()
+struct MessageView: View {
+    var selectedUser: User
+    @ObservedObject var authVM = AuthViewModel()
+    @ObservedObject var msgVM = MessageViewModel()
+    @State private var newMessage: String = ""
+    
+    // color codes
+    let currColor = Color(red: 0.21, green: 0.34, blue: 0.57) // sender/currentUser color
+    let recvColor = Color(red: 0.37, green: 0.35, blue: 0.64) // receiver/selectedUSer color
+    let headerTextColor = Color(red: 0.96, green: 0.82, blue: 0.44) // header text color
+    let headerColor = Color(red: 0.19, green: 0.16, blue: 0.18) // header background color
+    let bg = Color(red: 0.25, green: 0.25, blue: 0.33) // main app background color
+    
+    var body: some View {
+        ZStack {
+            VStack {
+                VStack {
+                    VStack {
+                        /* CHAT LOGS */
+                        List(msgVM.messages) { message in // populate list with messages array from messageViewModel
+                            if message.senderId == selectedUser.id { // if sender's ID is same as selected user's ID
+                                Text("\(selectedUser.username): \(message.text)") // text message is from selected user
+                                    .foregroundColor(.white)
+                                    .listRowBackground(recvColor)
+                            } else { // if the ID's are not the same
+                                Text("You: \(message.text)") // text message is from sender
+                                    .foregroundColor(.white)
+                                    .listRowBackground(currColor)
+                            }
+                        }.background(bg)
+                        .scrollContentBackground(.hidden)
+                    }.border(.green)
+                        
+                    /* TEXT FIELD AND SEND BUTTON */
+                    HStack {
+                        TextField("Type a message", text: $newMessage) // field for user to input new message
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                        Button { // get current user from AuthViewModel
+                            guard let currentUser = authVM.currentUser else { return } // get current user
+                            msgVM.sendMessage(content: newMessage, senderId: currentUser.id, receiverId: selectedUser.id) // call sendMessage function from MessageViewModel
+                            newMessage = "" // empty the new message string
+                        } label: {
+                            Text("Send")
+                                .padding()
+                        }
+                        .background(.blue)
+                        .cornerRadius(4)
+                    }
+                    .padding(.horizontal)
+                    .padding(.vertical, 8)
+                }.background(headerColor)
+                .onAppear {
+                    // get current user from AuthViewModel
+                    guard let currentUser = authVM.currentUser else { return }
+                    // call fetchMessages function from MessageViewModel
+                    msgVM.fetchMessages(currentUser: User(id: currentUser.id, username: "You", email: currentUser.email, sunSign: currentUser.sunSign), selectedUser: selectedUser)
+                }
+                .onDisappear {
+                    msgVM.stopListening()
+                }
+            }
+            .border(Color(.pink))
+            .padding(.bottom, 9)
+            .padding(.top, 1)
+            .navigationBarTitle(selectedUser.username, displayMode: .inline)
+            .background(headerColor)
+        }.background(bg)
     }
 }

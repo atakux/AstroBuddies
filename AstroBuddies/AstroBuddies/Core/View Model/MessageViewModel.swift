@@ -4,48 +4,83 @@
 //
 //  Created by tvirata on 12/5/23.
 //
-
+import SwiftUI
 import Foundation
 import Firebase
+import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 class MessageViewModel: ObservableObject {
     @Published var messages: [Message] = []
-    // User object in Model
-    @Published var currentUser: User?
-    let fs = Firestore.firestore() // firestore db
-    var listenerRegistration: ListenerRegistration? // firebase event listener
-
-    init() {
-        loadMessages()
-    }
-
-    func loadMessages() {
-        listenerRegistration = fs.collection("messages")
-            .addSnapshotListener { querySnapshot, error in
-                if let error = error {
-                    print("Error loading messages: \(error.localizedDescription)")
-                        return
-                }
-
-                guard let documents = querySnapshot?.documents else { return }
-
-                self.messages = documents.compactMap { document in
-                    try? document.data(as: Message.self)
-                }
-            }
-    }
-
-    
-    func sendMessage(content: String) {
-        // get current user's uid
-        guard let currentUser = Auth.auth().currentUser
-            else { return }
-        let message = Message(user: currentUser.uid, text: content) // set message's user to user's uid and text
-            do {
-                _ = try fs.collection("messages").addDocument(from: message) // add new message to firestore collection
-            } catch {
-                print("Error sending message: \(error.localizedDescription)")
-            }
+    private var listener: ListenerRegistration? // firebase event listener
+ 
+    init(messages: [Message] = []) { // initialize MessageViewModel so messages is not empty after each call
+            self.messages = messages
         }
+    
+    func sendMessage(content: String, senderId: String, receiverId: String) {
+        // create new message object using sender's text typed into the text field
+        let message = Message(senderId: senderId, receiverId: receiverId, text: content, timestamp: Date())
+        do {
+            // add message to messages collection on firestore
+            try Firestore.firestore().collection("messages").addDocument(from: message)
+        } catch {
+            print("Error sending message: \(error.localizedDescription)")
+        }
+    }
+
+    func fetchMessages(currentUser: User, selectedUser: User) {
+        // assign event listener to retrieve message documents between current user and selected user
+        listener = Firestore.firestore().collection("messages")
+            .whereField("senderId", in: [currentUser.id, selectedUser.id])
+            .whereField("receiverId", in: [currentUser.id, selectedUser.id])
+            .order(by: "timestamp", descending: false)
+            .addSnapshotListener { snapshot, error in
+                guard let documents = snapshot?.documents else {
+                    print("Error fetching messages: \(error?.localizedDescription ?? "Unknown error")")
+                    return
+                }
+                    self.messages = documents.compactMap { document -> Message? in
+                        do {
+                            return try document.data(as: Message.self)
+                        } catch {
+                            print("Error decoding message: \(error.localizedDescription)")
+                            return nil
+                        }
+                    }
+            }
+    }
+    
+    func stopListening() {
+        listener?.remove() // remove event listener
+    }
 }
+
+
+class UsersViewModel: ObservableObject {
+    @Published var users: [User] = []
+    init() {
+        fetchUsers() // initialize using fetchUsers function so that users array is not empty after first iteration
+    }
+    func fetchUsers() {
+        // add snapshot listener to "users" collection from firestore database
+        Firestore.firestore().collection("users")
+            .addSnapshotListener { snapshot, error in
+                guard let documents = snapshot?.documents else {
+                    print("Error fetching users: \(error?.localizedDescription ?? "Unknown error")")
+                    return
+                }
+                self.users = documents.compactMap { document -> User? in
+                    do {
+                        return try document.data(as: User.self)
+                    } catch {
+                        print("Error decoding user: \(error.localizedDescription)")
+                        return nil
+                    }
+                }
+            }
+    }
+}
+
+
+
