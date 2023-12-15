@@ -5,32 +5,62 @@ import FirebaseAuth
 
 struct ShowUsersView: View {
     @ObservedObject var usersVM = UsersViewModel()
+    // Top edge value
+    @State var top = UIApplication.shared.windows.first?.safeAreaInsets.top
+    
+    
     // color codes
     let currColor = Color(red: 0.21, green: 0.34, blue: 0.57) // sender/currentUser color
     let recvColor = Color(red: 0.37, green: 0.35, blue: 0.64) // receiver/selectedUSer color
     let headerTextColor = Color(red: 0.96, green: 0.82, blue: 0.44) // header text color
     let headerColor = Color(red: 0.19, green: 0.16, blue: 0.18) // header background color
-    let bg = Color(red: 0.25, green: 0.25, blue: 0.33) // main app background color
+    let bg = Color(red: 0.27, green: 0.25, blue: 0.33) // main app background color
     var body: some View {
         VStack {
+            // Top bar
+            VStack {
+                HStack(alignment: .center) {
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Spacer(minLength: 2)
+                            
+                            // Message Title
+                            Text("Messages")
+                                .font(.title)
+                                .foregroundColor(Color(red: 0.96, green: 0.82, blue: 0.44))
+                                .frame(alignment: .center)
+                                .padding(.top, top)
+                            
+                            Spacer()
+                            
+                        }.padding(.horizontal)
+                            .padding(.leading, 10)
+                    }
+                    .padding(.horizontal)
+                }
+                .padding(.top, 20)
+                .frame(alignment: .leading)
+            }
+            .cornerRadius(22)
+            
             NavigationView {
                 // populate list with array of users from UsersViewModel
                 List(usersVM.users) { user in
                     // nagivate to MessageView to view chat logs between current user and selected user
                     NavigationLink(destination: MessageView(selectedUser: user)) {
                         Text(user.username)
+                            .fontWeight(.bold)
+                            .foregroundColor(Color(red: 0.73, green: 0.71, blue: 0.98))
                     }.listRowBackground(recvColor)
-                        .foregroundColor(.white)
+                        
                 }
-                .navigationBarTitle("Users") // All users menu
-                .border(.black)
                 .background(bg)
                 .scrollContentBackground(.hidden)
             }
             .onAppear {
                 usersVM.fetchUsers()
             }
-        }
+        }.modifier(AppBackground())
     }
 }
 
