@@ -3,7 +3,7 @@ Authors:
 1. Angela DeLeo (atakux707@csu.fullerton.edu)
 2. Roman Saddi (badong1@csu.fullerton.edu)
 3. HaYeon Son (hyson0427@csu.fullerton.edu)
-4. Tonirose Virata (
+4. Tonirose Virata (tvirata@csu.fullerton.edu)
 
 ## Background and motivation
 AstroBuddies is designed to connect astrology lovers with one another in a centralized app that fulfills all their needs. As individuals who enjoy astrology, we wanted to create an application that will allow users to talk to each other on one app while being able to bond over their zodiac signs as well as their tarot readings.
