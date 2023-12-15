@@ -85,7 +85,8 @@ struct MessageView: View {
                         /* CHAT LOGS */
                         List(msgVM.messages) { message in // populate list with messages array from messageViewModel
                             if message.senderId == selectedUser.id { // if sender's ID is same as selected user's ID
-                                Text("\(selectedUser.username): \(message.text)") // text message is from selected user
+                                Text("\(selectedUser.username): \(message.text)")
+                                // text message is from selected user
                                     .foregroundColor(.white)
                                     .listRowBackground(recvColor)
                             } else { // if the ID's are not the same
@@ -95,7 +96,7 @@ struct MessageView: View {
                             }
                         }.background(bg)
                         .scrollContentBackground(.hidden)
-                    }.border(.green)
+                    }
                         
                     /* TEXT FIELD AND SEND BUTTON */
                     HStack {
@@ -125,7 +126,6 @@ struct MessageView: View {
                     msgVM.stopListening()
                 }
             }
-            .border(Color(.pink))
             .padding(.bottom, 9)
             .padding(.top, 1)
             .navigationBarTitle(selectedUser.username, displayMode: .inline)

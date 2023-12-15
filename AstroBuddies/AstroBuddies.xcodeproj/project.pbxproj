@@ -20,6 +20,7 @@
 		08912C6F2B1D9393003EFBAB /* TarotCardDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08912C6E2B1D9393003EFBAB /* TarotCardDetailsView.swift */; };
 		08912C752B1FB06F003EFBAB /* CompatibilityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08912C742B1FB06F003EFBAB /* CompatibilityViewModel.swift */; };
 		08912C772B1FF545003EFBAB /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 08912C762B1FF545003EFBAB /* Config.plist */; };
+		08BA8E512B2CE83800C31862 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BA8E502B2CE83800C31862 /* ProfileView.swift */; };
 		198D8C362B09AC82004A6BD6 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198D8C352B09AC81004A6BD6 /* LoginView.swift */; };
 		198D8C382B09AF67004A6BD6 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198D8C372B09AF66004A6BD6 /* InputView.swift */; };
 		198D8C3A2B09BAA7004A6BD6 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198D8C392B09BAA7004A6BD6 /* SignupView.swift */; };
@@ -102,6 +103,7 @@
 		08912C6E2B1D9393003EFBAB /* TarotCardDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarotCardDetailsView.swift; sourceTree = "<group>"; };
 		08912C742B1FB06F003EFBAB /* CompatibilityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityViewModel.swift; sourceTree = "<group>"; };
 		08912C762B1FF545003EFBAB /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		08BA8E502B2CE83800C31862 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		198D8C352B09AC81004A6BD6 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginView.swift; path = ../LoginView.swift; sourceTree = "<group>"; };
 		198D8C372B09AF66004A6BD6 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		198D8C392B09BAA7004A6BD6 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				19CC61E82B0AC72B0006CC74 /* MessageView.swift */,
 				19CC61EA2B0AC9E70006CC74 /* SettingsView.swift */,
 				0862DA1F2B12715A009113B8 /* HoroscopeView.swift */,
+				08BA8E502B2CE83800C31862 /* ProfileView.swift */,
 			);
 			path = AstroBuddiesViews;
 			sourceTree = "<group>";
@@ -544,6 +547,7 @@
 				0862DA342B19C03D009113B8 /* ZodiacInfoViewModel.swift in Sources */,
 				0862DA2D2B196239009113B8 /* HoroscopeViewModel.swift in Sources */,
 				19CC61EF2B0AE2E20006CC74 /* SettingsRowView.swift in Sources */,
+				08BA8E512B2CE83800C31862 /* ProfileView.swift in Sources */,
 				19A5C7322AEA20330030D62E /* ContentView.swift in Sources */,
 				19CC61E92B0AC72C0006CC74 /* MessageView.swift in Sources */,
 				08912C752B1FB06F003EFBAB /* CompatibilityViewModel.swift in Sources */,

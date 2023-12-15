@@ -70,7 +70,7 @@ struct BirthInfoView: View {
                         
                         // TODO: maybe integrate a google maps API to autocomplete it for the user
                         // Get user's place of birth
-                        Text("Enter your place of birth:")
+                        Text("Enter place of birth:")
                             .modifier(HeaderModifier())
                         
                         InputView(text: $placeOfBirth, placeholder: "Place of Birth")
