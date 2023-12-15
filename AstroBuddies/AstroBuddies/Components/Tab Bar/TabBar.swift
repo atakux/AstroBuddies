@@ -48,7 +48,8 @@ struct TabBar: View {
             
             // Tab icon for MessageView
             // if selected, changes colour
-            MessageView()
+            //MessageView()
+            ShowUsersView()
                 .tag(Tab.message)
                 .tabItem {
                     Image(selectedTab == .message ? "message-icon-fill" : "message-icon")

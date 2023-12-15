@@ -109,9 +109,9 @@ struct BirthInfoView: View {
                         // TODO: Store date and time of birth in the database
                         // TODO: Store user's sun sign, moon sign, and rising sign in database
                         
-                        
+                        // dateOfBirth, timeOfBirth, placeOfBirth added by hyson 20231208
                         Task {
-                            try await viewModel.signUp(withUsername:username, email: email, password: password, sunSign: sunSign!)
+                            try await viewModel.signUp(withUsername:username, email: email, password: password, sunSign: sunSign!, dateOfBirth: date, timeOfBirth: timeOfBirth, placeOfBirth: placeOfBirth)
                         }
                         
                         
