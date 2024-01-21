@@ -5,6 +5,9 @@ Authors:
 3. HaYeon Son (hyson0427@csu.fullerton.edu)
 4. Tonirose Virata (tvirata@csu.fullerton.edu)
 
+## Running
+Run on XCode 15 on an iPhone 15 Pro simulator or device. Ensure all dependencies are installed! App unavailable in App Store :(
+
 ## Background and motivation
 AstroBuddies is designed to connect astrology lovers with one another in a centralized app that fulfills all their needs. As individuals who enjoy astrology, we wanted to create an application that will allow users to talk to each other on one app while being able to bond over their zodiac signs as well as their tarot readings.
 
@@ -21,7 +24,6 @@ AstroBuddies provides daily & monthly horoscopes, tarot readings, and compatibil
 6. Database, Authentication (Angela DeLeo) - Store user information in a database while providing authentication.
 
 ## Tools
-
 XCode 15, iPhone 15 Pro
 Database: Firebase
 Python, PythonKit
