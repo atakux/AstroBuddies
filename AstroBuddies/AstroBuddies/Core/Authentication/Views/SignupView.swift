@@ -24,7 +24,7 @@ struct SignupView: View {
     @State private var navigateToBirthInfo = false
     
     var body: some View {
-        NavigationView {
+        ZStack {
             VStack {
                 Spacer()
                 Spacer()

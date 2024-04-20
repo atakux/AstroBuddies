@@ -35,7 +35,7 @@ struct HomeView: View {
         // Home Screen
         VStack {
             if let user = viewModel.currentUser {
-                NavigationView {
+                ZStack {
                     
                     VStack {
                         
@@ -54,10 +54,6 @@ struct HomeView: View {
                             
                             Spacer(minLength: 0)
                             
-                        }
-                        .padding(.horizontal)
-                        .padding(.top, top)
-                        .toolbar {
                             Spacer()
                             
                             Button {
@@ -71,7 +67,10 @@ struct HomeView: View {
                                 SettingsView()
                                     .interactiveDismissDisabled()
                             }
-                        }.frame(height: 120)
+                            
+                        }
+                        .padding(.horizontal)
+                        .padding(.top, top)
 
                         // Content on home screen
                         VStack {
@@ -134,11 +133,13 @@ struct HomeView: View {
                                             }
                                         }
                                     }
-                                    .frame(width: 354, height: 312)
+                                    .frame(height: 312)
                                     .background(
                                         LinearGradient(gradient: contentGradient, startPoint: .top, endPoint: .bottom)
                                     )
                                     .cornerRadius(22)
+                                    .contentMargins(20)
+                                    .padding(.horizontal)
                                     
                                     
                                     // Container holding Moon details
@@ -187,11 +188,13 @@ struct HomeView: View {
                                             }
                                         }
                                     }
-                                    .frame(width: 354, height: 100)
+                                    .frame(height: 100)
                                     .background(
                                         LinearGradient(gradient: contentGradient, startPoint: .top, endPoint: .bottom)
                                     )
                                     .cornerRadius(22)
+                                    .contentMargins(20)
+                                    .padding()
                                     
                                     
                                     // Container holding Zodiac Sign Details details
@@ -259,11 +262,13 @@ struct HomeView: View {
                                             }
                                         }
                                     }
-                                    .frame(width: 354, height: 312)
+                                    .frame(height: 312)
                                     .background(
                                         LinearGradient(gradient: contentGradient, startPoint: .top, endPoint: .bottom)
                                     )
                                     .cornerRadius(22)
+                                    .contentMargins(20)
+                                    .padding(.horizontal)
 
                                 }
                                 .scrollTargetLayout()

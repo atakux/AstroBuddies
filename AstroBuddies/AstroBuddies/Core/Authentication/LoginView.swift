@@ -75,6 +75,7 @@ struct LoginView: View {
             }
             .modifier(AppBackground())
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

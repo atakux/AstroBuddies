@@ -43,7 +43,7 @@ struct ShowUsersView: View {
             }
             .cornerRadius(22)
             
-            NavigationView {
+            ZStack {
                 // populate list with array of users from UsersViewModel
                 List(usersVM.users) { user in
                     // nagivate to MessageView to view chat logs between current user and selected user
