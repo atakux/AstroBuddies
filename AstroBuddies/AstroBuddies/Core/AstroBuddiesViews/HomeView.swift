@@ -46,27 +46,29 @@ struct HomeView: View {
                                 Text(user.username)
                                     .fontWeight(.bold)
                                     .modifier(HeaderModifier())
+                                    .padding(.horizontal)
                                 
                                 Text("☉ \(user.sunSign.rawValue) ☾ moon sign ↑ rising sign")
                                     .font(.subheadline)
                                     .modifier(TextModifier())
+                                    .padding(.horizontal)
                             }.padding()
                             
                             Spacer(minLength: 0)
                             
-                            Spacer()
-                            
                             Button {
                                 isSettingsViewActive.toggle()
                             } label: {
-                                Spacer()
                                 Image("settings-icon")
                                     .padding(.vertical)
+                                    .padding(.trailing)
                             }
                             .sheet(isPresented: $isSettingsViewActive) {
                                 SettingsView()
                                     .interactiveDismissDisabled()
                             }
+                            
+                            Spacer(minLength: 0)
                             
                         }
                         .padding(.horizontal)
